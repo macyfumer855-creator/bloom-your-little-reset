@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom — Your Little Reset</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --bg:#fff8f8; --card:#ffffff; --ink:#442b3b; --muted:#a38b9a;
+  --pink:#f4b9ce; --pink-light:#fff0f5; --berry:#9b456d;
+  --line:#f3e5eb; --green:#7a9d83; --shadow:0 12px 35px #7c3d5710;
+}
+body.dark {
+  --bg:#211923; --card:#302431; --ink:#fff0f5; --muted:#c2a7b8;
+  --pink:#c67b9b; --pink-light:#49303f; --berry:#f0a9c7;
+  --line:#493744; --green:#a4c7a7; --shadow:0 12px 35px #00000020;
+}
+* {box-sizing:border-box}
+body {margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;transition:.3s}
+button,input,textarea {font:inherit}
+button {cursor:pointer}
+.app {max-width:1440px;margin:auto;display:grid;grid-template-columns:235px 1fr;min-height:100vh}
+.sidebar {padding:34px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:35px}
+.brand {display:flex;align-items:center;gap:10px;font-size:23px;font-weight:700;letter-spacing:-1px}
+.logo {width:39px;height:39px;border-radius:14px;background:linear-gradient(140deg,#f8c8da,#c56b96);display:grid;place-items:center;color:white;font-size:23px;box-shadow:0 6px 15px #d98bab40}
+.brand span {color:var(--berry)}
+.eyebrow {font-size:10px;letter-spacing:2px;font-weight:700;color:var(--muted);margin:0 0 13px 10px}
+.nav {display:flex;flex-direction:column;gap:7px}
+.nav button {border:0;background:transparent;color:var(--muted);text-align:left;padding:13px 14px;border-radius:13px;display:flex;gap:12px;align-items:center;font-size:13px}
+.nav button.active,.nav button:hover {background:var(--pink-light);color:var(--berry)}
+.nav .ico {font-size:17px;width:20px;text-align:center}
+.sidebar-bottom {margin-top:auto}
+.mini-note {background:var(--pink-light);border-radius:18px;padding:16px;font-size:12px;line-height:1.7;color:var(--muted)}
+.mini-note strong {display:block;color:var(--berry);font-size:13px;margin-bottom:4px}
+main {padding:35px clamp(20px,4vw,55px);min-width:0}
+.topbar {display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:35px}
+.date {font-size:12px;color:var(--muted);margin-bottom:5px}
+h1,h2,h3,p {margin-top:0}
+h1,h2,h3 {font-family:'Playfair Display',serif;font-weight:600}
+h1 {font-size:clamp(27px,3vw,39px);letter-spacing:-1px;margin-bottom:8px}
+.subtitle {font-size:13px;color:var(--muted);line-height:1.7}
+.actions {display:flex;gap:10px}
+.icon-btn {width:43px;height:43px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:17px}
+.avatar {width:43px;height:43px;border-radius:15px;background:var(--pink);display:grid;place-items:center;font-size:21px}
+.hero {background:linear-gradient(115deg,#fce2eb 0%,#f9d1df 48%,#f3bfd3 100%);color:#61334b;border-radius:26px;padding:27px 30px;display:grid;grid-template-columns:1fr 160px;align-items:center;position:relative;overflow:hidden;margin-bottom:25px;min-height:190px}
+body.dark .hero {background:linear-gradient(115deg,#553247,#6a3c56);color:#fff0f5}
+.hero:after {content:"";position:absolute;width:240px;height:240px;border:1px solid #ffffff70;border-radius:50%;right:40px;top:-130px}
+.hero-tag {font-size:10px;letter-spacing:2px;font-weight:700;text-transform:uppercase;opacity:.75;margin-bottom:12px}
+.hero h2 {font-size:clamp(23px,2.5vw,32px);margin-bottom:10px;line-height:1.2}
+.hero p {font-size:12px;line-height:1.7;max-width:390px;margin:0;opacity:.8}
+.hero-art {font-size:91px;text-align:center;filter:drop-shadow(0 8px 10px #9c557b25);animation:float 4s ease-in-out infinite;z-index:1}
+@keyframes float {0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-8px) rotate(4deg)}}
+.stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:28px}
+.stat {background:var(--card);border:1px solid var(--line);border-radius:19px;padding:18px;box-shadow:var(--shadow)}
+.stat-head {display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);gap:8px}
+.stat-icon {font-size:19px}
+.stat-value {font-size:28px;font-weight:700;letter-spacing:-1px;margin:12px 0 5px}
+.stat-foot {font-size:11px;color:var(--muted)}
+.content-grid {display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.85fr);gap:20px}
+.panel {background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow);min-width:0}
+.panel-head {display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:7px}
+.panel h3 {font-size:20px;margin:0}
+.small-label {font-size:11px;color:var(--muted)}
+.progress-track {height:6px;background:var(--pink-light);border-radius:99px;overflow:hidden;margin:17px 0 21px}
+.progress-fill {height:100%;width:0;background:linear-gradient(90deg,#eaa6c2,#a65079);border-radius:99px;transition:width .5s}
+.habit-list {display:flex;flex-direction:column;gap:10px}
+.habit {display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:15px;transition:.2s}
+.habit:hover {transform:translateY(-1px);border-color:var(--pink)}
+.check {appearance:none;width:21px;height:21px;flex-shrink:0;border:1.5px solid #dfb6c8;border-radius:7px;cursor:pointer;display:grid;place-items:center;margin:0}
+.check:checked {background:var(--berry);border-color:var(--berry)}
+.check:checked:after {content:'✓';font-size:14px;color:white}
+.habit-copy {flex:1;min-width:0}
+.habit-name {font-size:12px;font-weight:700;margin-bottom:4px}
+.habit-desc {font-size:10px;color:var(--muted)}
+.habit-emoji {width:36px;height:36px;border-radius:12px;background:var(--pink-light);display:grid;place-items:center;font-size:18px}
+.habit.done .habit-name {text-decoration:line-through;color:var(--muted)}
+.add-row {display:flex;gap:8px;margin-top:14px}
+.add-row input {flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--bg);color:var(--ink);outline:none;font-size:12px}
+.add-row input:focus,textarea:focus {border-color:var(--pink)}
+.primary {border:0;background:var(--berry);color:white;border-radius:12px;padding:11px 15px;font-size:12px;font-weight:700}
+.primary:hover {filter:brightness(1.08)}
+.garden {text-align:center;background:linear-gradient(160deg,var(--pink-light),var(--card));border:1px solid var(--line);border-radius:18px;padding:18px 10px;margin:17px 0}
+.flower {font-size:76px;line-height:1.3;display:block;transition:.3s;filter:drop-shadow(0 5px 6px #d48aaa20)}
+.garden h4 {margin:8px 0 5px;font-size:13px}
+.garden p {font-size:11px;color:var(--muted);margin:0;line-height:1.6}
+.garden-meter {display:flex;gap:5px;justify-content:center;margin-top:13px}
+.garden-meter span {height:5px;width:25px;border-radius:9px;background:var(--line)}
+.garden-meter span.on {background:var(--berry)}
+.quote {border-left:3px solid var(--pink);padding:3px 0 3px 13px;margin-top:20px}
+.quote p {font-family:'Playfair Display',serif;font-size:15px;line-height:1.6;margin-bottom:5px}
+.quote span {font-size:10px;color:var(--muted)}
+.week {display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:17px}
+.day {text-align:center;font-size:10px;color:var(--muted)}
+.day-dot {margin:8px auto 0;width:27px;height:27px;border-radius:10px;display:grid;place-items:center;background:var(--pink-light);font-size:11px;color:var(--berry)}
+.day.today .day-dot {background:var(--berry);color:white}
+.journal {margin-top:20px}
+textarea {width:100%;min-height:90px;resize:vertical;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:13px;padding:12px;font-size:12px;outline:none;line-height:1.6}
+.journal-bottom {display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.toast {position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--card);padding:12px 18px;border-radius:14px;font-size:12px;transition:.25s;z-index:10;box-shadow:var(--shadow)}
+.toast.show {opacity:1;transform:translate(-50%,0)}
+footer {text-align:center;font-size:10px;color:var(--muted);padding:30px 0 5px}
+@media(max-width:900px){.app{grid-template-columns:75px 1fr}.sidebar{padding:25px 12px;align-items:center}.brand{font-size:0}.brand .logo{font-size:23px}.eyebrow,.nav-label,.mini-note{display:none}.nav button{justify-content:center;padding:13px}.nav .ico{width:auto}.content-grid{grid-template-columns:1fr}.sidebar-bottom{display:none}}
+@media(max-width:560px){main{padding:23px 15px}.topbar{margin-bottom:25px}.hero{padding:22px;grid-template-columns:1fr 80px;min-height:160px}.hero-art{font-size:61px}.stats{gap:8px}.stat{padding:12px}.stat-value{font-size:23px}.stat-head{font-size:10px}.stat-foot{font-size:9px}.panel{padding:16px}.actions{gap:6px}.avatar,.icon-btn{width:38px;height:38px}.brand{gap:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">✿</div> blo<span>om.</span></div>
+    <div>
+      <p class="eyebrow">YOUR LITTLE SPACE</p>
+      <nav class="nav">
+        <button class="active" onclick="showToast('You’re right where you need to be 🌷')"><span class="ico">⌂</span><span class="nav-label">My day</span></button>
+        <button onclick="document.getElementById('habits').scrollIntoView({behavior:'smooth'})"><span class="ico">♡</span><span class="nav-label">My habits</span></button>
+        <button onclick="document.getElementById('garden').scrollIntoView({behavior:'smooth'})"><span class="ico">❀</span><span class="nav-label">My garden</span></button>
+        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})"><span class="ico">✎</span><span class="nav-label">My journal</span></button>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <p class="eyebrow">A LITTLE REMINDER</p>
+      <div class="mini-note"><strong>You're allowed to grow slowly. 🌱</strong>You don't have to do everything today. Just do one small thing for yourself.</div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><div class="date" id="date"></div><h1>Your own little reset.</h1><p class="subtitle">A softer way to show up for yourself, one day at a time.</p></div>
+      <div class="actions"><button class="icon-btn" id="themeBtn" title="Toggle theme" onclick="toggleTheme()">☾</button><div class="avatar">🌷</div></div>
+    </header>
+
+    <section class="hero">
+      <div><div class="hero-tag">✦ a note just for you</div><h2>Little by little,<br>you’re blooming.</h2><p>There’s no rush to become everything you dream of. Take a breath, start where you are, and let today be enough.</p></div>
+      <div class="hero-art">🌸</div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><div class="stat-head">Today's progress <span class="stat-icon">♡</span></div><div class="stat-value"><span id="percent">0</span><small style="font-size:15px">%</small></div><div class="stat-foot">Every little step counts</div></div>
+      <div class="stat"><div class="stat-head">Tasks completed <span class="stat-icon">✿</span></div><div class="stat-value"><span id="completed">0</span><small style="font-size:15px;color:var(--muted)"> / <span id="total">5</span></small></div><div class="stat-foot">Look at you showing up!</div></div>
+      <div class="stat"><div class="stat-head">Your mood <span class="stat-icon">☁️</span></div><div class="stat-value" id="moodValue">Soft</div><div class="stat-foot">Choose your pace today</div></div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel" id="habits">
+        <div class="panel-head"><h3>Today's little things</h3><span class="small-label" id="taskLabel">0 of 5 done</span></div>
+        <p class="subtitle">Small promises you make to yourself.</p>
+        <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+        <div class="habit-list" id="habitList"></div>
+        <form class="add-row" id="addForm"><input id="newHabit" maxlength="55" placeholder="Add a little goal..." aria-label="New habit"><button class="primary" type="submit">+ Add</button></form>
+      </section>
+
+      <div>
+        <section class="panel" id="garden">
+          <div class="panel-head"><h3>Your little garden</h3><span class="small-label">✿ growing with you</span></div>
+          <div class="garden"><span class="flower" id="flower">🌱</span><h4 id="flowerTitle">A new beginning</h4><p id="flowerText">Complete a little task and watch your garden grow.</p><div class="garden-meter" id="gardenMeter"></div></div>
+          <div class="panel-head"><h3>Your week</h3><span class="small-label">One day at a time</span></div>
+          <div class="week" id="week"></div>
+          <div class="quote"><p id="quote">“You deserve the same love you give so freely to others.”</p><span>A LITTLE SOMETHING TO REMEMBER</span></div>
+        </section>
+
+        <section class="panel journal" id="journal">
+          <div class="panel-head"><h3>A thought to keep</h3><span>♡</span></div>
+          <p class="subtitle">How are you really feeling today?</p>
+          <textarea id="journalText" maxlength="1000" placeholder="Let it out. This little space is yours..."></textarea>
+          <div class="journal-bottom"><span class="small-label" id="savedLabel">Only saved on this device</span><button class="primary" onclick="saveJournal()">Save my thoughts</button></div>
+        </section>
+      </div>
+    </div>
+    <footer>made with a little love & lots of room to grow ♡</footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const defaults = [
+  {name:"Drink some water",desc:"A little kindness for your body",emoji:"💧"},
+  {name:"Move your body",desc:"Stretch, walk, or just dance a little",emoji:"🩰"},
+  {name:"Learn something new",desc:"Even ten minutes is a start",emoji:"📚"},
+  {name:"Take a quiet moment",desc:"Breathe. You don't have to rush",emoji:"🕯️"},
+  {name:"Do one thing for future me",desc:"A small step toward your dreams",emoji:"🌷"}
+];
+const key = "bloom-selfcare-v1";
+let data;
+try { data = JSON.parse(localStorage.getItem(key)) || {}; } catch(e) { data = {}; }
+let habits = Array.isArray(data.habits) ? data.habits : defaults.map((h,i)=>({...h,id:i+1,done:false}));
+let nextId = Math.max(5,...habits.map(h=>Number(h.id)||0))+1;
+let completedDates = data.completedDates || {};
+let lastDay = data.lastDay || "";
+let journal = data.journal || {};
+const today = new Date();
+const dayKey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const todayKey = dayKey(today);
+if(lastDay !== todayKey) { habits = habits.map(h=>({...h,done:false})); lastDay=todayKey; }
+document.getElementById("date").textContent=today.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+document.getElementById("journalText").value=journal[todayKey] || "";
+function persist(){
+  try {localStorage.setItem(key,JSON.stringify({habits,completedDates,lastDay,journal,theme:document.body.classList.contains("dark")}));} catch(e){}
+}
+function renderHabits(){
+  const list=document.getElementById("habitList");
+  list.innerHTML="";
+  habits.forEach(h=>{
+    const row=document.createElement("div");
+    row.className="habit"+(h.done?" done":"");
+    const check=document.createElement("input");check.type="checkbox";check.className="check";check.checked=!!h.done;check.setAttribute("aria-label","Complete "+h.name);
+    check.addEventListener("change",()=>{h.done=check.checked;update();showToast(h.done?"One little promise kept ✨":"That's okay, take your time ♡");});
+    const copy=document.createElement("div");copy.className="habit-copy";
+    const name=document.createElement("div");name.className="habit-name";name.textContent=h.name;
+    const desc=document.createElement("div");desc.className="habit-desc";desc.textContent=h.desc || "A little step just for you";
+    const emoji=document.createElement("div");emoji.className="habit-emoji";emoji.textContent=h.emoji || "🌸";
+    copy.append(name,desc);row.append(check,copy,emoji);
+    if(h.id>5){const del=document.createElement("button");del.textContent="×";del.className="icon-btn";del.style.width="30px";del.style.height="30px";del.setAttribute("aria-label","Delete "+h.name);del.onclick=()=>{habits=habits.filter(x=>x.id!==h.id);update();};row.append(del);}
+    list.append(row);
+  });
+}
+function update(){
+  const done=habits.filter(h=>h.done).length;
+  const pct=habits.length?Math.round(done/habits.length*100):0;
+  document.getElementById("percent").textContent=pct;
+  document.getElementById("completed").textContent=done;
+  document.getElementById("total").textContent=habits.length;
+  document.getElementById("taskLabel").textContent=`${done} of ${habits.length} done`;
+  document.getElementById("progress").style.width=pct+"%";
+  const flower=pct===0?"🌱":pct<35?"🌷":pct<70?"🌸":pct<100?"💐":"🌺";
+  const title=pct===0?"A new beginning":pct<35?"Your first petals":pct<70?"Look how you're growing":pct<100?"A garden in bloom":"You're blooming beautifully!";
+  const message=pct===0?"Complete a little task and watch your garden grow.":pct<35?"Every small thing you do helps you grow.":pct<70?"You're making space for good things. Keep going.":pct<100?"Look at all the care you've given yourself today.":"You showed up for yourself today. That matters.";
+  document.getElementById("flower").textContent=flower;
+  document.getElementById("flowerTitle").textContent=title;
+  document.getElementById("flowerText").textContent=message;
+  document.getElementById("moodValue").textContent=pct===0?"Soft":pct<70?"Growing":"Glowing";
+  document.getElementById("gardenMeter").innerHTML=Array.from({length:5},(_,i)=>`<span class="${pct>i*20?'on':''}"></span>`).join("");
+  completedDates[todayKey]=pct===100 && habits.length>0;
+  renderHabits();renderWeek();persist();
+}
+function renderWeek(){
+  const container=document.getElementById("week");
+  container.innerHTML="";
+  const start=new Date(today);start.setDate(today.getDate()-((today.getDay()+6)%7));
+  ["M","T","W","T","F","S","S"].forEach((label,i)=>{
+    const d=new Date(start);d.setDate(start.getDate()+i);
+    const el=document.createElement("div");el.className="day"+(dayKey(d)===todayKey?" today":"");
+    const name=document.createElement("div");name.textContent=label;
+    const dot=document.createElement("div");dot.className="day-dot";
+    dot.textContent=completedDates[dayKey(d)]?"✓":d.getDate();
+    el.append(name,dot);container.append(el);
+  });
+}
+document.getElementById("addForm").addEventListener("submit",e=>{
+  e.preventDefault();const input=document.getElementById("newHabit");const name=input.value.trim();
+  if(!name)return;
+  habits.push({id:nextId++,name,desc:"A little step just for you",emoji:"🌼",done:false});
+  input.value="";update();showToast("Your new little goal is here 🌼");
+});
+function saveJournal(){
+  journal[todayKey]=document.getElementById("journalText").value;
+  persist();document.getElementById("savedLabel").textContent="Saved just for you ✓";showToast("Your thoughts have been saved ♡");
+}
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  document.getElementById("themeBtn").textContent=document.body.classList.contains("dark")?"☀":"☾";
+  persist();
+}
+if(data.theme){document.body.classList.add("dark");document.getElementById("themeBtn").textContent="☀";}
+let toastTimer;
+function showToast(message){
+  const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+update();
+</script>
+</body>
+</html>
