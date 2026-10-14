@@ -1,486 +1,814 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Bloom - Your Little Reset</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#fff7f8">
+<title>Bloom - Your Little Reset</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
---bg: #fff8f7;
---paper: #ffffff;
---pink: #f7dce3;
---pink-dark: #e9aabb;
---berry: #a84768;
---berry-dark: #81334e;
---text: #44353a;
---muted: #927d84;
---line: #927d84;
---green: #dce9d9;
---green-dark: #62835e;
---shadow: 0 12px 35px rgba(123, 64, 83, .08);
-}
-* { box-sizing: border-box; }
-body {
-margin: 0;
-background: var(--bg);
-color: var(--text);
-font-family: 'DM Sans', sans-serif;
-line-height: 1.5;
-}
-button, input, textarea { font: inherit; }
-button {cursor: pointer;}
-.app { display: flex; min-height: 100vh; }
-.sidebar {
-    width: 235px;
-    padding: 30px 20px;
-    background: #fffdfd;
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-.brand { display: flex; align-items: center; gap: 10px; padding: 0 10px; }
-.brand-flower { font-size: 29px; }
-.brand-name { font: 700 29px 'Playfair Display', serif; color: var(--berry); }
-.brand-small { color: var (--muted); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
-.nav { display: grid; gap: 8px; } 
-.nav button {
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    padding: 12px 14px;
-    border-radius: 14px;
-    text-align: left;
-}
-.nav button.active, .nav button:hover { background: var(--pink); color: var(--berry-dark); }
-.sidebar-note {
-    margin-top: auto;
-    padding: 18px;
-    border-radius: 18px;
-    background: #f9e9ed;
-    color: var(--berry-dark);
-    font-size: 13px;
-}
-.sidebar-note strong { display: block; margin-bottom: 5px; }
-.main { flex: 1; min-width: 0; padding: 34px clamp(20px, 4vw, 58px);max-width: 1500px; margin: 0 auto; }
-.topbar { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 25px; }
-.eyebrow { color: var(--berry); font-size: 12px; font-weight:700; letter-spacing: 1.7px; text-transform: uppercase; }
-h1, h2, h3, p { margin-top: 0; } 
-h1 { font: 600 clamp(32px,4vw, 47px) 'Playfair Display', serif; margin: 5px 0 8px; }
-h2 { font: 600 25px 'Playfair Display', serif; margin-bottom: 5px; }
-h3 { font-size: 15px; margin-bottom: 4px; }
-.subtitle { color: var(--muted); margin-bottom: 0; }
-.top-actions { display: flex; gap: 10px; align-items: center; }
-.icon-button, .soft-button {
-    border: 1px solid var(--line);
-    background: var(--paper);
-    color: var(--berry-dark);
-    border-radius: 13px;
-    padding: 10px 13px;
-}
-.hero {
-    padding: clamp(23px, 4vw, 38px);
-    border-radius: 25px;
-    background: linear-gradient(120deg, #f8dfe6, #fff0f0 65%, #f4e6ed);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    overflow: hidden;
-    margin-bottom: 22px;
-}
-.hero p { color: #795966; max-width: 510px; margin-bottom: 10px; }
-.primary-button {
-    background: var(--berry);
-    color: white;
-    border: 0;
-    padding: 12px 17px;
-    border-radius: 13px;
-    font-weight: 700;
-}
-.primary-button:hover { background: var(--berry-dark); }
-.hero-flower { font-size: clamp(70px, 10vw, 115px); padding: 0 18px; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-bottom: 22px; }
-.stat, .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
-.stat { padding: 18px 20px; }
-.stat-label { color: var(--muted); font-size: 12px; }
-.stat-number { font: 600 29px 'Playfair Display', serif; color: var(--berry); margin-top: 4px; }
-.content-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: 20px; align-items: start; }
-.panel { padding: 23px; margin-bottom: 20px; }
-.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 17 px; }
-.panel-head p { color: var(--muted); font-size: 12px; margin: 0; }
-.progress-track { height: 8px; background: #f5e9ec; border-radius: 20px; overflow: hidden; margin: 13px 0 18px; }
-.progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, #e7a7ba, #a84768); border-radius: inherit; transition: width .25s ease; }
-.habit-list { display: grid; gap: 10px; }
-.habit { 
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-}
-.habit input { width: 18px; height: 18px; accent-color: var(--berry); }
-.habit-label { flex: 1; }
-.habit.done .habit-label { color: var(--muted); text-decoration: line-through; }
-.delete-habit { border: 0; background: transparent; color: #b79aa3; font-size: 18px; }
-.add-row { display: flex; gap: 8px; margin-top: 13px; }
-.add-row input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 11px 12px; background: var(--bg); color: var(--text); }
-.small-button { border: 0; border-radius: 12px; padding: 10px 14px; background: var(--pink); color: var(--berry-dark); font-weight: 700; }
-.garden-box { text-align: center; padding: 8px 0 2px; }
-.garden-flower { font-size: 78px; line-height: 1.25; margin: 8px 0; transition: transform .25s ease; }
-.garden-flower.blooming { transform: scale( 1.08); }
-.garden-caption { color: var(--muted); font-size: 13px; }
-.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; margin-top: 17px; }
-.day { text-align: center; color: var(--muted); font-size: 11px; }
-.day-circle { display: grid; place-items: center; margin: 7px auto 0; width: 31px; height: 31px; border-radius: 50%; background: #fbf0f2; color: var(--berry-dark); font-size: 12px; }
-.day.today .day-circle { background: var(--berry); color: white; }
-.quote { background: #edf3ea; border-radius: 18px; padding: 20px; color: #4e6b4b; }
-.quote p { font: italic 18px 'Playfair DIsplay', serif; margin-bottom: 7px; }
-.quote small { color: #70866d; }
-textarea { 
-    width: 100%; 
-    min-height: 125px;
-    resize: vertical;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: var(--bg);
-    color: var(--text);
-    padding: 13px;
-    outline-color: var(--pink-dark);
-}
-.journal-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; }
-.muted { color: var(--muted); font-size: 12px; }
-.toast { position: fixed; bottom: 22px; left: 50%; transform: translatex(-50%); background: var(--berry-dark); color: white; padding: 11px 17px; border-radius: 13px; opacity: 0; pointer-events: none; transition: opacity .2s; }
-.toast.show { opacity: 1; }
-body.dark { 
-    --bg: #211a20;
-    --paper: #2d242c;
-    --text: #f6eaf0;
-    --muted: #c0aab5;
-    --line: #493541;
-    --pink: #573344;
-    --pink-dark: #bd8198;
-    --berry: #e5a0b8;
-    --berry-dark: #f0bfd0;
-    --green: #354333;
-    --green-dark: #c1d6bb;
-    --shadow: 0 12px 35px rgba(0, 0, 0, .15);
-}
-body.dark .sidebar { background: #271f26; }
-body.dark .sidebar-note { background: #49313d; color: #f3dce5; }
-body.dark .hero { background: linear-gradient(120deg, #50313f, #3d2b38 65%, #3d303b); }
-body.dark .hero p { color: #e3c8d3; }
-body.dark .progress-track, body.dark .day-circle {Background: #251e25; }
-body.dark .quote { background: #303d2e; color: #d7e7d1; }
-body.dark .quote small { color: #b9cbb3; }
-body.dark .add-row input, body.dark textarea { background: #251e25; }
-@media (max-width: 850px) { 
-    .sidebar { width: 190px; padding: 24px 13px; }
-    .main { padding: 25px 20px; }
-    .content-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 620px) { 
-    .app { display: block; }
-    .sidebar { width: 100%; padding: 14px 16px; border-right: 0; border-bottom: 1px solid var(--line); gap: 13px; }
-    .brand { padding: 0 4px; }
-    .brand-name { font-size: 25px; }
-    .sidebar-note { display: none; }
-    .nav { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
-    .nav button { text-align: center; padding: 9px 4px; font-size: 11px; }
-    .main { padding: 22px 15px; }
-    .topbar { align-items: flex-start; }
-    .top-actions { flex-shrink: 0; }
-    .hero { align-items: flex-start; }
-    .hero-flower { padding: 0; font-size: 58px; }
-    .stats { gap: 8px; }
-    .stat { padding: 13px 10px; }
-    .stat-number { font-size: 23px; }
-    .stat-label { font-size: 10px; }
-    .panel { padding: 17px; }
-}
-@media ( prefers-reduced-motion: reduce) { 
-    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
-}
-</style>
-</head>
-<body>
-    <div class="app">
-        <aside class="sidebar">
-            <span class="brand">
-                <span class="brand-flower">✿</span>
-                <div>
-                    <div class="brand-name">Bloom</div>
-                    <div class="brand-small">your little reset</div>
+    :root {
+        --bg: #fff8f8;
+        --surface: #ffffff;
+        --pink: #e99cae;
+        --pink-dark: #c76f88;
+        --pink-light: #fde8ed;
+        --text: #44373d;
+        --muted: #917f87;
+        --border: #f2dfe5;
+        --green: #9ebda5;
+        --yellow: #f3dca0;
+        --shadow: 0 8px 38px rgba(160, 105, 125, 0.08);
+    }
+    * { box-sizing: border-box;}
+    body { 
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'DM Sans', sans-serif;
+        transition: background .25s, color .25s;
+    }
+    body.dark{
+        --bg: #211c24;
+        --surface: #302832;
+        --pink: #e7a0b5;
+        --pink-dark: #e7a0b5;
+        --pink-light: #48313d;
+        --text: #f8edf1;
+        --muted: #c1aeb9;
+        --border: #4c3c49;
+        --green: #a5c7ac;
+        --yellow: #e8d49a;
+        --shadow: 0 apx 30px rgba(0,0,0,.12);
+    }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer;  }
+    button:focus-visible, input:focus-visible, textarea:focus-visible { 
+        outline: 3px solid var(--pink);
+        outline-offset: 3px;
+    }
+    .container { width: min(1120px, 92%); margin: auto; }
+    header { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .brand {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--pink-dark);
+    }
+    .brand small {
+        display: block;
+        font: 12px 'DM Sans', sans-serif;
+        color: var(--muted);
+        letter-spacing: 1px;
+    }
+    .header-actions { display: flex; gap: 10px; }
+    .icon-button, .secondary-button {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 14px;
+        padding: 10px 14px;
+    }
+    .hero { 
+        padding: 44px 0 28px;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        align-items: center;
+        gap: 28px;
+    }
+    .eyebrow {
+        color: var(--pink-dark);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { 
+        font: 500 clamp( 35px, 5vw, 55px)/1.12 'Playfair Display', serif;
+        margin: 12px 0;
+    }
+    h1 span { color: var(--pink-dark); font-style: italic; }
+    .hero p { color: var(--muted); line-height: 1.8; }
+    .primary-button { 
+        border: 0;
+        border-radius: 14px;
+        background: var(--pink-dark);
+        color: white;
+        padding: 13px 19px;
+        font-weight: 700;
+    }
+    .primary-button:hover { opacity: .88; }
+    .hero-card { 
+        background: var(--pink-light);
+        border: 1px solid var(--border);
+        padding: 25px;
+        border-radius: 25px;
+        text-align: center;
+    }
+    .hero-flower { font-size: 55px; margin-bottom: 8px; }
+    .hero-card p { margin-bottom: 0; }
+    .date-line { color: var(--muted); font-size: 13px; margin-top: 12px; }
+    .section-heading { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin: 25px 0 15px;
+    }
+    h2 { font: 600 25px 'Playfair Display', serif; margin-bottom: 0; }
+    h3 { font-size: 16px; margin-bottom: 8px; }
+    .muted { color: var(--muted); font-size: 13px; }
+    .dashboard { 
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        padding-bottom: 35px;
+    }
+    .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 21px;
+        box-shadow: var(--shadow);
+        min-width: 0;
+    }
+    .wide { grid-column: span 2; }
+    .full { grid-column: 1 / -1; }
+    .panel-title { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 17px;
+    }
+    .panel-icon { font-size: 23px; }
+    .habit-list { display: grid; gap: 10px; }
+    .habit { 
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 11px;
+        border-radius: 13px;
+        background: var(--bg);
+    }
+    .habit input { accent-color: var(--pink-dark); width: 18px; height: 18px; }
+    .habit-name { flex: 1; overflow-wrap: anywhere; }
+    .habit.done .habit-name { text-decoration: line-through; color: var(--muted); }
+    .delete-button { 
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        padding: 5px;
+    }
+    .add-row { display: flex; gap: 8px; margin-top: 14px; }
+    .text-input, textarea { 
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        border-radius: 12px;
+    }
+    .add-row .primary-button { padding: 10px 15px; }
+    .progress-track { 
+        height: 9px;
+        border-radius: 20px;
+        background: var(--pink-light);
+        overflow: hidden;
+        margin: 12px 0;
+    }
+    .progress-fill { 
+        height: 100%;
+        width: 0;
+        border-radius: inherit;
+        background: var(--pink-dark);
+        transition: width .3s;
+    }
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .stat { 
+        text-align: center;
+        background: var(--bg);
+        padding: 14px 7px;
+        border-radius: 14px;
+    }
+    .stat strong { 
+        display: block;
+        font: 600 25px 'Playfair Display', serif;
+        color: var(--pink-dark);
+    }
+    .stat span { font-size: 11px; color: var(--muted); }
+    .mood-options { 
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+    }
+    .mood-button { 
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        border-radius: 14px;
+        padding: 11px 2px;
+        font-size: 23px;
+    }
+    .mood-button span { display: block; font-size: 10px; margin-top: 4px; }
+    .mood-button.selected { 
+        background: var(--pink-light);
+        border-color: var(--pink-dark);
+    }
+    .water-cups {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 9px;
+        margin: 15px 0;
+    }
+    .water-cup { 
+        min-height: 62px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        border-radius: 13px;
+        font-size: 23px;
+    }
+    .water-cup.filled {
+        background: #dff1f7;
+        border-color: #9acbdc;
+    }
+    .journal-form { display: grid; gap: 10px; }
+    textarea { min-height: 100px; resize: vertical; line-height: 1.6; }
+    .journal-entry {
+        background: var(--bg);
+        border-radius: 14px;
+        padding: 13px;
+        margin-top: 10px;
+        overflow-wrap: anywhere;
+    }
+    .entry-date { color: var(--muted); font-size: 11px; margin-bottom: 7px; }
+    .entry-text { white-space: pre-wrap; line-height: 1.6; }
+    .garden { 
+        text-align: center;
+        background: linear-gradient(180deg, var(--pink-light), var(--surface));
+        border-radius: 18px;
+        padding: 20px;
+    }
+    .garden-plant { font-size: 45px; margin: 10px; }
+    .affirmation { 
+        font: italic 21px/1.5 'Playfair Display', serif;
+        text-align: center;
+        padding: 12px 0;
+    }
+    .reset-box { 
+        text-align: center;
+        background: var(--bg);
+        border-radius: 16px;
+        padding: 18px;
+    }
+    .breath-circle { 
+        width: 100px;
+        height: 100px;
+        display: grid;
+        place-items: center;
+        margin: 15px auto;
+        border-radius: 50%;
+        background: var(--pink-light);
+        border: 2px solid var(--pink);
+        font-size: 14px;
+    }
+    .breath-circle.breathing { animation: breathe 8s ease-in-out infinite; }
+    @keyframes breathe {
+        0%, 100% { transform: scale( .85); }
+        50% { transform: scale(1.15); }
+    }
+    footer { 
+        text-align: center;
+        color: var(--muted);
+        padding: 15px 0 35px;
+        font-size: 12px;
+    }
+    .empty-state { color: var(--muted); font-size: 13px; line-height: 1.6; }
+    @media (max-width: 800px) {
+        .hero { grid-template-columns: 1fr; padding-top: 30px; }
+        .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .wide { grid-column: span 2; }
+    }
+    @media (max-width: 540px) { 
+        header { align-items: flex-start; }
+        .brand { font-size: 27px; }
+        .icon-button { padding: 9px; }
+        .dashboard { grid-template-columns: 1fr; }
+        .wide, .full { grid-column: auto; }
+        .panel { padding: 9px; }
+        h2 { font-size: 23px; }
+        .stats { gap: 6px; }
+        .stat strong { font-size: 22px; }
+    }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="brand">bloom<small>YOUR LITTLE RESET🌷</small></div>
+                <div class="header-actions">
+                    <button class="icon-button" id="theme-button" aria-label="Toggle dark mode">🌙</button>
                 </div>
-            </div>
-            <nav class="nav" aria-label="Main navigation">
-                <button class="active" data-target="today">☀ My day</button>
-                <button data-target="habits">♡ My habits</button>
-                <button data-target="garden">✿ My garden</button>
-                <button data-target="journal">✎ My journal</button>
-            </nav>
-            <div class=" sidebar-note">
-                <strong> A gentle reminder🌷</strong>
-                You don't have to do everything today. Just take one small step.
-            </div>
-        </aside>
-        <main class="main">
-            <header class="topbar">
-                <div>
-                    <div class="eyebrow" id="date label"> A fresh start</div>
-                    <h1> Make room to bloom.</h1>
-                    <p class="subtitle"> A little progress is still progress. Be kind to yourself today.</p>
+                </header>
+
+                <section class="hero">
+                    <div>
+                        <div class="eyebrow">A fresh page, every day</div>
+                        <h1>A little space to <span>breathe</span> and bloom.</h1>
+                        <p>You don't have to have it all figured out. Take things one small step at a time. This is your reminder to care for yourself, too.</p>
+                        <button class="primary-button" id="start-button">Let's reset✨</button>
+                        <div class="date-line" id="date-label"></div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-flower">🌷</div>
+                        <h3>Hey, lovely human.</h3>
+                        <p>class="muted">You are allowed to grow at your own pace. Little steps count.</p>
+                    </div>
+                </section>
+
+                <div class="section-heading" id="dashboard-heading">
+                    <h2>Your little reset</h2>
+                    <span class="muted">Small steps, real progress</span>
                 </div>
-                <div class="top--actions">
-                    <button class="icon-button" id="theme-toggle" aria-label="Toggle dark mode">☾</button>
+
+                <main class="dashboard">
+                    <section class="panel wide">
+                        <div class="panel-title">
+                            <div><h3>Today's little habits</h3></div> class="muted"> Tiny promises to yourself 🌱 </div></div>
+                            <span class="panel-icon">☀️</span>
+                        </div>
+                        <div class="habit-list" id="habit-list"></div>
+                        <form class="add-row" id="habit-form">
+                            <input class="text-input" id="habit-input" maxlength="70" placeholder="Add a little habit..." aria-label="New habit">
+                            <button class="primary-button" type="submit">Add +</button>
+                        </form>
+                        <div style="margin-top:18px">
+                            <div class="muted" id="habit-progress-label">0 of 0 habits complete</div>
+                            <div class="progress-track"><div class="progress-fill" id="habit-progress"></div></div>
+                        </div>
+                  </section>
+
+                  <section class="panel">
+                    <div class="panel-title"><h3>Your progress</h3><span class="panel-icon">✨</span></div>
+                    <div class="stats">
+                        <div class="stat"><strong id="stat-habits">0</strong><span>Habits today</span></div>div>
+                        <div class="stat"><strong id="stat-streak">0</strong><span>Day streak</span></div>
+                        <div class="stat"><strong id="stat-journal">0</strong><span>Journal notes</span><div>
+                 </div>
+                 <p class="muted" style="margin-top:15px">Every little effort matters. Celebrate the progress you make, not just the finish line.</p>
+           </section>
+
+           <section class="panel">
+            <div class="panel-title"></div><h3>How are you feeling?</h3><div class="muted">Check in with yourself.</div></div><span class="panel-icon">💗</span></div>
+            <div class="mood-options" id="mood-options">
+                <button type="button" class="mood-button" data-mood="Amazing" aria-label="Amazing"</span></button>
+                <button type="button" class="mood-button" data-mood="Happy" aria-label="Happy">😊<span>Happy</span></button>
+                <button type="button" class="mood-button" data-mood="Okay" aria-label="Okay">😌<span>okay</span></button>
+                <button type="button" class="mood-button" data-mood="Sad" aria-label="Sad">🥺<span>Sad</span></button>
+                <button type="button" class="mood-button" data-mood="Stressed" aria-label="Stressed">😵‍💫<span>Stressed</span></button>
+            </div>
+            <p class="muted" id="mood-message" style="margin:14px 0 0">Whatever you're feeling, you don't have to judge it.</p>
+           </section>
+
+           <section class="panel">
+            <div class="panel-title"></div><h3>Drink some water</h3><div class="muted">A little hydration break 💧</div></div><span class="panel-icon">🥤</span></div>
+            <strong id="water-count"0 of 8 cups</strong>
+                <div class="water-cups" id="water-cups"></div>
+                <button class="secondary-button" id="water-reset" type="button">Reset cups</button>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-title"></div><h3>Your little garden</h3><div class="muted">Care for yourself, grow your garden.</div></div><span class="panel-icon">🪴</span></div>
+                    <div class="garden"
+                    <div class="garden-plant" id="garden-plant">🌱</div>
+                    <strong id="garden-title">A new beginning</strong>
+                    <p class="muted" id="garden-message" style="margin:8px 0 0">Your little garden is just getting started.</p>
                 </div>
-            </header>
-<section class="hero" id="today">
-    <div>
-        <div class="eyebrow">Your space, your pace</div>
-        <h2>Welcome to your soft place to land.</h2>
-        <p>Check in with yourself, care for your habits, and celebrate the tiny things you're doing for you.</p>
-        <button class="primary-button" id="start-button">Start my day↗</button>
-    </div>
-    <div class="hero-flower" aria-hidden="true">🌷</div>
-</section>
-        <section class="stats" aria-label="Your progress">
-            <div class="stat">
-                <div class="stat-label"> Habits completed</div>
-                <div class="stat-number" id="stat-completed">0/4</div>
-            </div>
-            <div class="stat">
-                <div class="stat-label">Daily progress</div>
-                <div class="stat-number" id="stat-progress">0%</div>
-            </div>
-            <div class="stat">
-                <div class="stat-label">Your current streak</div>
-                <div class="stat-number" id="stat-streak">🌱 1 day </div>
-            </div>
-        </section>
-<div class="content-grid"> 
-    </div>
-    <section class="panel" id="habits">
-        <div class="panel-head">  
-        </div>
-        <h2>Little things, daily</h2>
-        <p>Small habits can make a softer day</p>
-    </div>
-    <span>♡</span>
-</div>
-<div class="progress-track"></div class="progress-fill" id="progress-fill"></div></div>
-<div class="habit-list" id="habit-list"></div>
-<form class="add-row" id="habit-form">
-    <input id="habit-input" type="text" maxlength="60" placeholder="Add a little habit..." aria-label="New habit">
-    <button class="small-button" type="submit">+ Add</button>
-</form>
-    </section>
-    <section class="panel" id="journal">
-        <div class="panel-head"
-        <div>
-            <h2>A note to yourself</h2>
-            <p>Let your thoughts without judging them.</p>
-        </div>
-        <span>✎</span>
-    </div>
-    <textarea id="journal-entry" placeholder="Today, I'm feeling..."></textarea>
-    <div class="journal-actions"
-    <span class="muted" id="journal-status">Your note stays in this browser.</span>
-    <button class="small-button" id="save-journal">Save note ♡</button>
-</div>
-    </section>
-</div>
-<div>
-    <section class="panel" id="garden">
-        <div class="panel-head"
-        <div>
-            <h2>Your little garden</h2>
-            <p>Every completed habit helps you grow.</p>
-        </div>
-        <span>🌿</span>
-    </div>
-    <div class="garden-box">
-        <div class="garden-flower" id="garden-flower">🌱</div>
-        <h3 id="garden-title">Your garden is just beginning</h3>
-        <p class="garden-caption" id="garden-caption">Give yourself time. Growth happens little by little.</p>
-    </div>
-    <div class="week" id="week-days"></div>
-    </section>
-    <section class="quote">
-        <p>"You are allowed to grow slowly, and still be growing."</p>
-        <small>A little reminder for you 🌼</small>
-    </section>
-    </div>
-</div>
-</main>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>
-    const defaultHabits= [
-        {id: 1, name: "Drink a glass of water", done: false },
-        {id: 2, name: "Move or stretch for 5 minutes", done: false },
-        {id: 3, name: "Take a little screen break", done: false },
-        {id: 4, name: "Do one kind thing for myself, done: false" }
-    ];
-    let habits= loadHabits();
-    function loadHabits() {
-        try {
-            const saved= localStorage.getItem("bloom-habits");
-            return saved ? JSON.parse(saved) : defaultHabits;
-         } catch (error) { 
-            return defaultHabits;
-         }
-    }
-    function saveHabits() {
-        localstorage.setItem("bloom-habits", JSON.stringify(habits));
-    }
-    function showToast(message) {
-        const toast= document.getElementById("toast");
-        toast.textContent = message;
-        toast.classList.add("show");
-        clearTimeout(showToast.timer);
-        showToast.timer = setTimeout(() => toast.classList.remove("show"), 2200);
-    }
-    function renderHabits () {
-        const list = document.getElementById("habit-list");
-        list.innerHTML = "";
-        habits.forEach((habit)=> {
-            const row = document.createElement("div");
-            row.className = "habit" + (habit.done ? "done" : "");
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.checked = habit.done;
-            checkbox.setAttribute("aria-label", "Mark" + habit.name + "complete");
-            checkbox.addEventListener("change",() => {
-                habit.done = checkbox.checked;
-                saveHabits();
-                renderHabits();
-                updateProgress();
-            });
-            const label= document.createElement("span");
-            label.className= "habit-label";
-        label.textContent = habit.name;
-        const remove = document. createElement("button");
-        remove.className= "delete-habit";
-        remove.type = "button";
-        remove.textContent = "x";
-        remove.setAttribute("aria-label", "Delete" + habit.name);
-        remove.addEventListener("click", () => {
-            habits = habits.filter((item) => item.id !== habit.id);
-            saveHabits();
-            renderHabits();
-            updateProgress();
-            showToast("Habit removed."); 
-        });
-        row.append(checkbox, label, remove);
-        list.appendChild(row);
-    });
-    updateProgress();
-    }
-    function updateProgress() {
-        const total= habits.length;
-        const completed= habits.filter((habit) => habit.done).length;
-        const percent = total ? Math.round((completed / total) * 100): 0;
-        document.getElementbyId("stat-completed").textContent = completed + "/" + total;
-        document.getElementbyId("stat-progress").textContent = percent + "%";
-        document. getElementById("progress-fill").style.width = percent + "%";
-        const flower = document.getElementById("garden-flower");
-        const title = document.getElementById("garden-title");
-        const caption = document.getElementById("garden-caption");
-        flower.classList.toggle("blooming",percent === 100 && total >0);
-        if (percent === 100 && total > 0) {
-            flower.textContent = "🌸";
-            title.textContent = "Look at you, blooming!";
-            caption.textContent = "You showed up for yourself today. That matters.";
-          } else if (percent >= 50) {
-            flower.textContent = "🌷";
-            title.textContent = "You're growing beautifully";
-            caption.textContent = "Keep going at your own pace. You're doing enough.";
-        } else if (percent > 0) {
-            flower.textContent = "🌿";
-            title.textContent = "A little growth already";
-            caption.textContent = "Every small step counts.";
-        } else {
-            flower.textContent = "🌱";
-            title.textContent = "Your garden is just beginning";
-            caption.textContent = "Give yourself time. Growth happens little by little.";
-        }
-    }
-    document.getElementById("habit-form").addEventListener("submit", (event) => {
-        event.preventDefault();
-        const input = document.getElementById("habit-input");
-        const name = input.value.trim();
-        if (name) {
-            showToast("Write a habit first ♡");
-            input.focus();
-            return;
-        }
-        habits.push({ id: Date.now(), name, done: false});
-        saveHabits();
-        renderHabits()
-        input.value = "";
-        showToast("A new little habit added!");
-    });
-    const journal = document.getElementById("journal-entry");
-    journal.value = localStorage.getItem("bloom-journal") || "";
-    document.getElementById("save-journal").addEventListener("click", () => {
-        localStorage.setItem("bloom-journal", journal.value);
-        document.getElementById("journal-status").textContent = "Saved just now ♡";
-        showToast("Your note has been saved.");
- });
- const themeButton = document.getElementById("theme-toggle");
- if (localStorage.getItem("bloom-theme") === "dark") {
-    document.body.classList.add("dark");
-    themeButton.textcontent = "☀";
- }
- themeButton.addEventListener("click", () =>{
-    document.body.classList.toggle("dark");
-    const dark = document.body.classList.contains("dark");
-    localStorage.setItem("bloom-theme", dark ? "dark" : "light");
-    themeButton.textcontent = dark ? "☀" : "☾";
-     });
-     document.getElementById("start-button").addEventListener("click",() =>{
-        document.getElementbyId("habits").scrollIntoView({behavior: "smooth", block: "start" });
-        showToast("one small step at a time 🌷");
-});
-document.querySelectorAll(".nav button").forEach((button) => {
-    button.addEventListener("click",() =>{
-        document.querySelectorAll(".nav button").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        document.getElementById(button.dataset.target).scrollIntoview
-    });
-});
-function setDateAndweek() {
-    const now = new Date ();
-    document.getElementById("date-label").textcontent= now. toLocalDateString("en",{ 
-        weekday: "long", month: "long", day: "numeric"
-    });
-    const week = document.getElementById("week-days");
-    const days = [ "S", "M", "T", "W", "T", "F", "S"];
-    const start = new Date(now);
-    start.setDate(now.getDate() - now.getDay());
-    week.innerHTML = "";
-    for (let i = 0; i < 7; i++) {
-        const date= new Date(start);
-        date.setDate(start.getDate() + i);
-        const item = document.createElement("div");
-        item.className = "day" + (date.toDateString() === now, toDateString() ? "today" : "");
-        const label = document.createElement("div");
-        label.textContent = days [i];
-        const circle = document.createElement("div");
-        circle.className = "day-circle";
-        circle.textContent = date.getDate();
-        item.append(label, circle);
-        week.appendChild(item);
-    }
-}
-document.getElementById ("stat-streak").textContent = "🌱 1 day";
-setDateAndWeek();
-renderHabits();
-</script>
-</body>
-</html>
+                </section>
+
+                <section class="panel wide">
+                    <div class="panel-title"></div><h3>A page for your thoughts</h3><div class="muted">Let it out. This space is yours.📝 </div></div><span class="panel-icon">📖</span></div>
+                    <form class="journal-form" id="journal-form">
+                        <textarea id="journal-input" maxlength="3000" placeholder="What's on your mind today? What are you grateful for? What do you need to let go of?" aria-label="Journal entry"></textarea>
+                        <button class="primary-button" type="submit">Save my thoughts♡</button>
+                        </form>
+                        <div class="section-heading"><h3>Recent reflections</h3></div>
+                        <div id="journal-enteries"
+                </section>
+
+                <section class="panel">
+                    <div class="panel-title"><h3>A little reminder</h3><span class="panel-icon">💌</span></div>
+                    <div class="affirmation" id="affirmation=text">You are allowed to grow at your own pace.</div>
+                    <button class="secondary-button" id="new-affirmation" type="button">Another reminder✨</button>
+                    </section>
+
+                    <section class="panel">
+                        <div class="panel-title"></div><h3>Your mini reset</h3><div class="muted">Pause for a moment.</div></div><span class="panel-icon">🌸</span></div>
+                        <div class="reset-box">
+                            <div class="breath-circle" id="breath-circle">Breathe</div>
+                            <p class="muted" id="breath-message">You can take a moment for yourself.</p>
+                            <button class="primary-button" id="breath-button" type="button">Start breathing</button> 
+                        </div>
+                        </section>
+                    </main>
+
+                    <footer>Made with love, for the days you need a little extra softness. 🌷<br>Bloom at your own pace.</footer>
+                </div>
+
+                <script>
+                    const $ = (selector) => document.querySelector(selector);
+                    const $$ = (selector) => document.querySelectorAll(selector);
+
+                    function loadData(key, fallback) {
+                        try {
+                            const saved = localStorage.getItem(key);
+                            return saved === null ? fallback : JSON.parse(saved);
+                        } catch (error) {
+                            return fallback;
+                        }
+                    }
+
+                    function saveData(key, value) { 
+                        try {
+                            localStorage.setItem(key, JSON.stringify(value));
+                        } catch (error) {
+                            console.warn('Bloom could not save this item.', error);
+                        }
+                    }
+
+                    function localDateKey(date = new Date()) {
+                        const year = date.getFullYear();
+                        const month = String(date.getMonth() +1).padStart(2, '0');
+                        const day = String(date.getDate()).padStart(2, '0');
+                        return '${year}-${month}-${day}';
+                    }
+
+                    const defaultHabits = [
+                        { id: 1, name: 'Drink a glass of water', done: false },
+                        { id: 2, name: 'Take a little break', done: false },
+                        { id: 3, name: 'Move my body', done: false },
+                        { id: 4, name: 'Do something just for me', done: false }
+                    ];
+
+                    let habits = loadData('bloom-habits', defaultHabits);
+                    let water = loadData('bloom-water', { date: localDatakey(), count: 0 });
+                    let moods = loadData('bloom-moods', {});
+                    let journal = loadData('bloom-journal', []);
+                    let completedDays = loadData('bloom-completed-days', []);
+                    let darkMode = loadData('bloom-dark-mode', false);
+                    let habitDate = loadData('bloom-habit-date', localDateKey());
+                    let breathing = false;
+                    let breathTimeout = null;
+
+                    const affirmations = [
+                        'You are allowed to grow at your own pace.',
+                        'Rest is productive, too.',
+                        'You do not need to earn your rest.',
+                        'Smsll steps are still steps forward.',
+                        'You deserve the same kindness you give others.',
+                        'You can begin again as many times as you need.',
+                        'Progress does not have to be perfect.',
+                        'You are more than what you get done today',
+                        'It is okay to take things one day at a time.',
+                        'You are becoming, and that is enough.'
+                    ];
+
+                    const today = localDatekey();
+
+                    if (habitDate !== today) {
+                        habits = habits.map(habit => ({ ...habit, done: false}));
+                        habitDate = today;
+                        saveData('bloom-habits', habits);
+                        saveData('bloom-habit-date', habitDate);
+                    }
+
+                    if (water.date !== today) {
+                        water = { date: today, count: 0 };
+                        saveData('bloom-water', water);
+                    }
+
+                    if (darkMode) document.body.classList.add('dark');
+
+                    $('#date-label').textContent = new Date().toLocaleDateString(undefined, {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
+
+                    function renderHabits() {
+                        const list = $('#habit-list');
+                        list.innerHTML = '';
+
+                        if (!habits.length) {
+                            list.innerHTML = '<p class="empty-state">No habits yet. Add one small thing youd like to do for yourself.</p>';
+                        }
+
+                        habits.forEach(habit => {
+                            const row = document.createElement('div');
+                           row.className = 'habit' + (habit.done ? ' done' : '');
+
+                            const checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.checked = habit.done;
+                            checkbox.setAttribute('aria-label', 'Mark ${habit.name} complete');
+                            checkbox.addEventListener('change', () => {
+                                habits = habits.map(item => item.id === habit.id
+                                    ? { ...item, done: checkbox.checked }
+                                    : item);
+                                    saveData('bloom-habits', habits);
+                                    checkCompletedDay();
+                                    renderHabits();
+                                  });
+
+                                  const name = document.createElement('span');
+                                  name.className = 'habit-name';
+                                  name.textContent = habit.name;
+
+                                  const remove = document.createElement('button');
+                                  remove.className = 'delete-button';
+                                  remove.type ='button';
+                                  remove.textContent ='x';
+                                  remove.setAttribute('aria-label', 'Delete ${habit.name}');
+                                  remove.addEventListener('click', () => {
+                                    habits = habits.filter(item => item.id !== habit.id);
+                                    saveData( 'bloom-habits', habits);
+                                    checkCompletedDay();
+                                    renderHabits();
+                                  });
+
+                                  row.append(checkbox, name, remove);
+                                  list.appendChild(row);
+                        });
+
+                        const done = habits.filter(habit => habit.done).length;
+                        const total = habits.length;
+                        $('#habit-progress-label').textContent = '${done} of ${total} habits complete';
+                        $('#habit-progress').style.width = '${total ? done / total * 100 : 0}%';
+                        $('#stat-habits').textContent = done;
+                        updateGarden();
+                    } 
+
+                    function checkCompletedDay() {
+                        const allDone = habits.length > 0 && habits.every(habit => habit.done);
+                        if (allDone && !completedDays.includes(today)) {
+                            completedDays.push(today);
+                        }
+                        if (!allDone) {
+                            completedDays = completedDays.filter(day => day !== today);
+                        }
+                        saveData('bloom-completed-days', completedDays);
+                        renderStats();
+                    }
+
+                    function renderStats() {
+                        let streak = 0;
+                        const completed = new Set(completedDays);
+                        const date = new Date();
+
+                        while (completed.has(localDateKey(date))) {
+                            streak++;
+                            date.setDate(date.getDate() -1);
+                        }
+
+                        $('#stat-streak').textContent = streak;
+                        $('#stat-streak').textContent = journal.length;
+                    }
+
+                    $('#habit-form').addEventListener('submit', event => {
+                        event.preventDefault();
+                        const input = $('#habit-input');
+                        const name= input.value.trim();
+
+                        if (!name) {
+                            input.focus();
+                            return;
+                        }
+
+                        habits.push({
+                            id: Date.now(),
+                            name,
+                            done: false
+                        });
+
+                        saveData('bloom-habits', habits);
+                        input.value = '';
+                        checkCompletedDay();
+                        renderHabits();
+                    });
+
+                    function renderWater() {
+                        const holder = $('#water-cups');
+                        holder.innerHTML = '';
+
+                        for (let i = 1; i <= 8; i++) {
+                            const cup = document.createElement('button');
+                            cup.type = 'button';
+                           cup.className = 'water-cup' + (i <= water.count ? ' filled' : '');
+                           cup.textContent = i <= water.count ? '💧' : '🥛';
+                           cup.setAttribute('aria-label', 'Set water intake to ${i} cups');
+                           cup.setAttribute('aria-pressed', String(1 === water.count));
+                           cup.addEventListener('click', () => {
+                            water.count = i;
+                            water.date = today;
+                            saveData('bloom-water', water);
+                            renderwater();
+                        });
+                        holder.appendchild(cup);
+                    }
+
+                    $('#water-count').textContent = '${water.count} of 8 cups';
+                }
+
+                $('#water-reset').addEventListener('click', () =>{
+                    water = { date: today, count: 0 };
+                    saveData('bloom-water', water);
+                    renderWater();
+                });
+
+                function renderMood() {
+                    const mood = moods[today];
+                    $$('.mood-button').forEach(button => {
+                        const selected = button.dataset.mood === mood;
+                        button.classList.toggle ('selected', selected);
+                        button.setAttribute('aria-pressed', string(selected));
+                    });
+
+                    if (mood) {
+                        $('#mood-message').textContent = 'You checked in as feeling ${mood.toLowerCase()}. Be gentle with yourself today.';
+                    }
+                }
+
+                $$('.mood-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        moods[today] = button.dataset.mood;
+                        saveData('bloom-moods', moods);
+                        renderMood();
+                    });
+                });
+
+                function renderJournal() {
+                    const holder = $('#journal-entries');
+                    holder.innerHTML = '';
+
+                    if (!journal.length) {
+                        holder.innerHTML = '<p class="empty-state">Your reflections will appear here when you save yout first entry.💗</p>';
+                    }
+
+                    journal.slice(0, 5).forEach(entry => {
+                        const card = document.createElement('article');
+                        card.className = 'journal-entry';
+
+                        const date = document.createElement('div');
+                        date.className = 'entry-date';
+                        date.textContent = entry.date;
+
+                        const text = document.createElement('div');
+                        text.className = 'entry-text';
+                        text.textContent = entry.text;
+
+                        const remove = document.createElement('button');
+                        remove.type = 'button';
+                        remove.className = 'delete-button';
+                        remove.textContent = 'Delete entry';
+                        remove.addEventListener('click', () => {
+                            journal = journal.filter(item => item.id !== entry.id);
+                            saveData('bloom-journal', journal);
+                            renderJournal();
+                            renderStats();
+                            updateGarden();
+                        });
+
+                        card.append(date, text, remove);
+                        holder.appendChild(card);
+                    });
+                }
+
+                $('#journal-form').addEventListener('submit', event => {
+                    event.preventDefault();
+                    const input = $('#journal-input');
+                    const text = input.value.trim();
+
+                    if (!text) {
+                        input.focus();
+                        return;
+                    }
+
+                    journal.unshift({
+                        id: Date.now(),
+                        date: new Date().toLocaleString(),
+                        text
+                    });
+
+                    saveData('bloom-journal', journal);
+                    input.value = '';
+                    renderJournal();
+                    renderStats();
+                    updateGarden();
+                });
+
+                function updateGarden() {
+                    const habitPoints = habits.filter(habit => habit.done).length;
+                    const points = habitPoints + journal.length + completedDays.length;
+                    let plant = '🌱';
+                    let title = 'A new beginning';
+                    let message = 'Your little garden is just getting started';
+
+                    if (pointss >= 5) {
+                        plant = '🌿';
+                        title = 'Growing gently';
+                        message = 'Look at you, making space for yourself.';
+                    }
+                    if (points >= 12) {
+                        plant = '🪴';
+                        title = 'Growing stronger';
+                        message = 'Your small steps are adding up.';
+                    }
+                    if (points >= 25) { 
+                        plant = '🌷';
+                        title = 'Look at you bloom!'
+                        message = 'Keep showing up for yourself, one day at a time.';
+                    }
+
+                    $('#garden-plant').textContent = plant;
+                    $('#garden-title').textContent = title;
+                    $('#garden-message').textContent = message;
+                }
+
+                let affirmationIndex = 0;
+
+                $('#new-affirmation').addEventListener('click', () => {
+                    if (affirmations.length <2) return;
+                    let next = affirmationIndex;
+                    while (next === affirmationIndex) {
+                        next = Math.floor(Math.random() * affirmations.length);
+                    }
+                    affirmationindex = next;
+                    $('#affirmation-text').textContent = affirmations[affirmationIndex];
+                });
+
+                $('#theme-button').addEventListener('click', () => {
+                    darkMode = !darkMode;
+                    document.body.classList.toggle('dark', darkMode);
+                    $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
+                    saveData('bloom-dark-mode', darkMode);
+                });
+
+                $('#start-button').addEventListener('click', () => {
+                    $('#dashboard-heading').scrollIntoView({ behavior: 'smooth'});
+                });
+
+                $('#breath-button').addEventListener('click', () => {
+                    const circle = $('#breath-circle');
+                    const message = $('#breath-message');
+                    const button = $('#breath-button');
+
+                    breathing = !breathing;
+
+                    if (breathing) {
+                        circle.classList.add('breathing');
+                        circle.textContent = 'Breathe in...';
+                        message.textContent = 'Breathe in slowly, then breathe out gently';
+                        button.textContent = 'Finish reset';
+
+                        let inhale = true;
+                        breathTimeout = setInterval(() => {
+                            inhale = !inhale;
+                            circle.textContent = inhale ? 'Breathe in...' : 'Breathe out...';
+                        }, 4000);
+                    } else {
+                        circle.classList.remove('breathing');
+                        circle.textContent = "Breathe";
+                        message.textContent = 'Well done for taking a moment for yourself. 💗';
+                        button.textContent = 'Start breathing';
+                        clearInterval(breathTimeout);
+                        }
+                    });
+
+                    renderHabits();
+                    renderStats();
+                    renderWater();
+                    renderMood();
+                    renderJournal();
+                    updateGarden();
+                    </script>
+                    </body>
+                    </html>
