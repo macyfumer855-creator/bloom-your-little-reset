@@ -616,29 +616,31 @@
                     });
 
                     function renderWater() {
-                        const holder = $('#water-cups');
-                        holder.innerHTML = '';
+    const holder = $('#water-cups');
+    holder.innerHTML = '';
 
-                        for (let i = 1; i <= 8; i++) {
-                            const cup = document.createElement('button');
-                            cup.type = 'button';
-                           cup.className = 'water-cup' + (i <= water.count ? ' filled' : '');
-                           cup.textContent = i <= water.count ? '💧' : '🥛';
-                           cup.setAttribute('aria-label', 'Set water intake to ${i} cups');
-                           cup.setAttribute('aria-pressed', String(1 === water.count));
-                           cup.addEventListener('click', () => {
-                            water.count = i;
-                            water.date = today;
-                            saveData('bloom-water', water);
-                            renderwater();
-                        });
-                        holder.appendchild(cup);
-                    }
+    for (let i = 1; i <= 8; i++) {
+        const cup = document.createElement('button');
+        cup.type = 'button';
+        cup.className = 'water-cup' + (i <= water.count ? ' filled' : '');
+        cup.textContent = i <= water.count ? '💧' : '🥛';
+        cup.setAttribute('aria-label', `Set water intake to ${i} cups`);
+        cup.setAttribute('aria-pressed', String(i === water.count));
 
-                    $('#water-count').textContent = '${water.count} of 8 cups';
-                }
+        cup.addEventListener('click', () => {
+            water.count = i;
+            water.date = today;
+            saveData('bloom-water', water);
+            renderWater();
+        });
 
-                $('#water-reset').addEventListener('click', () =>{
+        holder.appendChild(cup);
+    }
+
+    $('#water-count').textContent = `${water.count} of 8 cups`;
+}
+
+$('#water-reset').addEventListener('click', () =>{
                     water = { date: today, count: 0 };
                     saveData('bloom-water', water);
                     renderWater();
@@ -732,7 +734,7 @@
                     let title = 'A new beginning';
                     let message = 'Your little garden is just getting started';
 
-                    if (pointss >= 5) {
+                    if (points >= 5) {
                         plant = '🌿';
                         title = 'Growing gently';
                         message = 'Look at you, making space for yourself.';
@@ -761,7 +763,7 @@
                     while (next === affirmationIndex) {
                         next = Math.floor(Math.random() * affirmations.length);
                     }
-                    affirmationindex = next;
+                    affirmationIndex = next;
                     $('#affirmation-text').textContent = affirmations[affirmationIndex];
                 });
 
