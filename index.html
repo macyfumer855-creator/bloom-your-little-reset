@@ -1,1657 +1,280 @@
-None selected
-
-Skip to content
-Using Gmail with screen readers
-1 of 2,838
-(no subject)
-Inbox
-
-Macy Fumer <macyfumer855@gmail.com>
-Attachments
-5:28 PM (1 minute ago)
-to me
-
- One attachment
-  •  Scanned by Gmail
-st matthewstolfer@gmail.com
-bloom-index-code.txt
-100%
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- 01. Document setup -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff7f8">
-  <meta name="description" content="Bloom is your gentle space for habits, hydration, journaling, and little resets.">
-  <title>Bloom — Your Little Reset</title>
-
-  <!-- 02. Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-
-  <!-- 03. Styles -->
-  <style>
-    /* 04. Theme variables */
-    :root {
-      color-scheme: light;
-      --bg: #fff8f8;
-      --surface: #ffffff;
-      --surface-soft: #fff1f4;
-      --pink: #e99cae;
-      --pink-dark: #c76f88;
-      --pink-light: #fde8ed;
-      --text: #44373d;
-      --muted: #917f87;
-      --border: #f2dfe5;
-      --green: #9ebda5;
-      --green-soft: #e8f2e9;
-      --yellow: #f3dca0;
-      --blue-soft: #e3f3f8;
-      --shadow: 0 8px 38px rgba(160, 105, 125, 0.08);
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
-      --content-width: 1120px;
-    }
-
-    /* 05. Dark theme */
-    body.dark {
-      color-scheme: dark;
-      --bg: #211c24;
-      --surface: #302832;
-      --surface-soft: #3a2b36;
-      --pink: #e7a0b5;
-      --pink-dark: #e7a0b5;
-      --pink-light: #48313d;
-      --text: #f8edf1;
-      --muted: #c1aeb9;
-      --border: #4c3c49;
-      --green: #a5c7ac;
-      --green-soft: #2e4035;
-      --yellow: #e8d49a;
-      --blue-soft: #2b4148;
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
-    }
-
-    /* 06. Global reset */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 20px;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible,
-    a:focus-visible {
-      outline: 3px solid var(--pink);
-      outline-offset: 3px;
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: 0.55;
-    }
-
-    a {
-      color: var(--pink-dark);
-    }
-
-    img,
-    svg {
-      max-width: 100%;
-    }
-
-    /* 07. Main layout */
-    .container {
-      width: min(var(--content-width), 92%);
-      margin-inline: auto;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 12px;
-      z-index: 100;
-      padding: 10px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-    }
-
-    .skip-link:focus {
-      top: 12px;
-    }
-
-    /* 08. Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.05;
-      color: var(--pink-dark);
-      letter-spacing: -0.8px;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 5px;
-      font: 700 10px 'DM Sans', sans-serif;
-      color: var(--muted);
-      letter-spacing: 1.7px;
-    }
-
-    .header-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .icon-button,
-    .secondary-button {
-      min-height: 42px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 10px 14px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-
-    .icon-button:hover,
-    .secondary-button:hover {
-      border-color: var(--pink);
-      transform: translateY(-1px);
-    }
-
-    /* 09. Navigation */
-    .main-nav {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 13px 0 3px;
-      scrollbar-width: thin;
-    }
-
-    .nav-link {
-      flex: 0 0 auto;
-      padding: 9px 13px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--pink-dark);
-      background: var(--pink-light);
-      border-color: var(--border);
-    }
-
-    /* 10. Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      align-items: center;
-      gap: 28px;
-      padding: 38px 0 25px;
-    }
-
-    .eyebrow {
-      color: var(--pink-dark);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      margin: 12px 0;
-      font: 500 clamp(35px, 5vw, 55px)/1.12 'Playfair Display', serif;
-      letter-spacing: -1px;
-    }
-
-    h1 span {
-      color: var(--pink-dark);
-      font-style: italic;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .primary-button {
-      min-height: 43px;
-      border: 0;
-      border-radius: 14px;
-      background: var(--pink-dark);
-      color: #fff;
-      padding: 12px 18px;
-      font-weight: 700;
-      box-shadow: 0 5px 16px rgba(199, 111, 136, 0.15);
-      transition: opacity 0.15s ease, transform 0.15s ease;
-    }
-
-    .primary-button:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .hero-card {
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 27px;
-      background: var(--pink-light);
-      text-align: center;
-    }
-
-    .hero-flower {
-      margin-bottom: 8px;
-      font-size: 55px;
-    }
-
-    .hero-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .hero-card p {
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .date-line {
-      margin-top: 13px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* 11. Section headings */
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 25px 0 15px;
-    }
-
-    h2 {
-      margin-bottom: 0;
-      font: 600 25px 'Playfair Display', serif;
-    }
-
-    h3 {
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    /* 12. Dashboard grid */
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: start;
-      gap: 16px;
-      padding-bottom: 30px;
-    }
-
-    .panel {
-      min-width: 0;
-      padding: 21px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
-
-    .wide {
-      grid-column: span 2;
-    }
-
-    .full {
-      grid-column: 1 / -1;
-    }
-
-    .panel-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 17px;
-    }
-
-    .panel-title h3 {
-      margin-bottom: 3px;
-    }
-
-    .panel-icon {
-      flex: 0 0 auto;
-      font-size: 23px;
-    }
-
-    /* 13. Habit list */
-    .habit-list {
-      display: grid;
-      gap: 9px;
-    }
-
-    .habit {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      padding: 11px;
-      border-radius: 13px;
-      background: var(--bg);
-      transition: background 0.2s ease;
-    }
-
-    .habit input {
-      flex: 0 0 auto;
-      width: 18px;
-      height: 18px;
-      accent-color: var(--pink-dark);
-    }
-
-    .habit-name {
-      flex: 1;
-      overflow-wrap: anywhere;
-      line-height: 1.45;
-    }
-
-    .habit.done .habit-name {
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-
-    .delete-button {
-      flex: 0 0 auto;
-      border: 0;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--muted);
-      padding: 5px 7px;
-      font-size: 12px;
-    }
-
-    .delete-button:hover {
-      color: var(--pink-dark);
-      background: var(--pink-light);
-    }
-
-    .add-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .text-input,
-    textarea,
-    select {
-      width: 100%;
-      min-width: 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--bg);
-      color: var(--text);
-      padding: 12px;
-    }
-
-    .text-input::placeholder,
-    textarea::placeholder {
-      color: var(--muted);
-      opacity: 0.85;
-    }
-
-    .add-row .primary-button {
-      flex: 0 0 auto;
-      padding-inline: 15px;
-    }
-
-    /* 14. Progress bar */
-    .progress-track {
-      height: 9px;
-      margin: 12px 0;
-      overflow: hidden;
-      border-radius: 20px;
-      background: var(--pink-light);
-    }
-
-    .progress-fill {
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--pink-dark);
-      transition: width 0.3s ease;
-    }
-
-    /* 15. Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 9px;
-    }
-
-    .stat {
-      min-width: 0;
-      padding: 14px 6px;
-      border-radius: 14px;
-      background: var(--bg);
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--pink-dark);
-      font: 600 25px 'Playfair Display', serif;
-      overflow-wrap: anywhere;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.4;
-    }
-
-    /* 16. Mood buttons */
-    .mood-options {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 7px;
-    }
-
-    .mood-button {
-      min-width: 0;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--bg);
-      color: var(--text);
-      padding: 10px 2px;
-      font-size: 22px;
-      transition: background 0.15s ease, border-color 0.15s ease;
-    }
-
-    .mood-button span {
-      display: block;
-      margin-top: 4px;
-      font-size: 9px;
-    }
-
-    .mood-button:hover,
-    .mood-button.selected {
-      border-color: var(--pink-dark);
-      background: var(--pink-light);
-    }
-
-    /* 17. Water tracker */
-    .water-cups {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 9px;
-      margin: 15px 0;
-    }
-
-    .water-cup {
-      min-height: 61px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 23px;
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-
-    .water-cup:hover {
-      transform: translateY(-1px);
-    }
-
-    .water-cup.filled {
-      border-color: #9acbdc;
-      background: var(--blue-soft);
-    }
-
-    .water-summary {
-      font-weight: 700;
-    }
-
-    /* 18. Garden */
-    .garden {
-      padding: 20px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, var(--pink-light), var(--surface));
-      text-align: center;
-    }
-
-    .garden-plant {
-      margin: 10px;
-      font-size: 49px;
-      transition: transform 0.25s ease;
-    }
-
-    .garden-plant.grow {
-      transform: scale(1.08);
-    }
-
-    .garden-progress {
-      height: 7px;
-      margin: 14px 0 8px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: var(--surface);
-    }
-
-    .garden-progress-fill {
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--green);
-      transition: width 0.3s ease;
-    }
-
-    /* 19. Journal */
-    .journal-form {
-      display: grid;
-      gap: 10px;
-    }
-
-    textarea {
-      min-height: 115px;
-      resize: vertical;
-      line-height: 1.6;
-    }
-
-    .journal-entry {
-      margin-top: 10px;
-      padding: 14px;
-      border-radius: 14px;
-      background: var(--bg);
-      overflow-wrap: anywhere;
-    }
-
-    .entry-topline {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .entry-date {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .entry-mood {
-      font-size: 17px;
-    }
-
-    .entry-text {
-      white-space: pre-wrap;
-      line-height: 1.65;
-    }
-
-    .journal-actions {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 8px;
-    }
-
-    /* 20. Affirmation */
-    .affirmation {
-      padding: 12px 0;
-      font: italic 21px/1.5 'Playfair Display', serif;
-      text-align: center;
-    }
-
-    /* 21. Breathing reset */
-    .reset-box {
-      padding: 18px;
-      border-radius: 16px;
-      background: var(--bg);
-      text-align: center;
-    }
-
-    .breath-circle {
-      display: grid;
-      place-items: center;
-      width: 106px;
-      height: 106px;
-      margin: 16px auto;
-      border: 2px solid var(--pink);
-      border-radius: 50%;
-      background: var(--pink-light);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .breath-circle.breathing {
-      animation: breathe 8s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scale(0.85); }
-      50% { transform: scale(1.13); }
-    }
-
-    /* 22. Toast messages */
-    .toast {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 50;
-      max-width: min(360px, calc(100vw - 36px));
-      padding: 13px 16px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: var(--shadow);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* 23. Empty states and footer */
-    .empty-state {
-      margin: 8px 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .footer-note {
-      padding: 15px 0 35px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-      text-align: center;
-    }
-
-    /* 24. Responsive tablet layout */
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 30px;
-      }
-
-      .hero-card {
-        max-width: none;
-      }
-
-      .dashboard {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .wide {
-        grid-column: span 2;
-      }
-    }
-
-    /* 25. Responsive phone layout */
-    @media (max-width: 540px) {
-      header {
-        align-items: flex-start;
-      }
-
-      .brand {
-        font-size: 27px;
-      }
-
-      .header-actions {
-        gap: 6px;
-      }
-
-      .icon-button {
-        padding: 9px 11px;
-      }
-
-      .dashboard {
-        grid-template-columns: 1fr;
-        gap: 13px;
-      }
-
-      .wide,
-      .full {
-        grid-column: auto;
-      }
-
-      .panel {
-        padding: 17px;
-      }
-
-      h2 {
-        font-size: 23px;
-      }
-
-      .stats {
-        gap: 6px;
-      }
-
-      .stat strong {
-        font-size: 22px;
-      }
-
-      .hero {
-        gap: 20px;
-      }
-
-      .hero-card {
-        padding: 20px;
-      }
-
-      .mood-options {
-        gap: 5px;
-      }
-
-      .mood-button {
-        font-size: 20px;
-      }
-
-      .mood-button span {
-        font-size: 8px;
-      }
-
-      .add-row {
-        align-items: stretch;
-      }
-
-      .add-row .primary-button {
-        padding-inline: 12px;
-      }
-    }
-
-    /* 26. Reduced motion accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to your dashboard</a>
-  <div class="container">
-    <!-- 27. Header and theme switch -->
-    <header>
-      <div class="brand" aria-label="Bloom, Your Little Reset">
-        bloom
-        <small>YOUR LITTLE RESET 🌷</small>
-      </div>
-      <div class="header-actions">
-        <button class="icon-button" id="theme-button" type="button" aria-label="Switch to dark mode" title="Toggle dark mode">🌙</button>
-      </div>
-    </header>
-
-    <!-- 28. Navigation -->
-    <nav class="main-nav" aria-label="Main navigation">
-      <a class="nav-link active" href="#dashboard-heading">Today</a>
-      <a class="nav-link" href="#habits-panel">Habits</a>
-      <a class="nav-link" href="#garden-panel">Garden</a>
-      <a class="nav-link" href="#journal-panel">Journal</a>
-      <a class="nav-link" href="#reset-panel">Mini reset</a>
-    </nav>
-
-    <!-- 29. Welcome area -->
-    <section class="hero" aria-labelledby="welcome-heading">
-      <div>
-        <div class="eyebrow">A fresh page, every day</div>
-        <h1 id="welcome-heading">A little space to <span>breathe</span> and bloom.</h1>
-        <p class="hero-copy">You don't have to have it all figured out. Take things one small step at a time. This is your reminder to care for yourself, too.</p>
-        <button class="primary-button" id="start-button" type="button">Let's reset ✨</button>
-        <div class="date-line" id="date-label"></div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-flower" aria-hidden="true">🌷</div>
-        <h3>Hey, lovely human.</h3>
-        <p>You are allowed to grow at your own pace. Little steps count.</p>
-      </div>
-    </section>
-
-    <!-- 30. Dashboard heading -->
-    <div class="section-heading" id="dashboard-heading">
-      <h2>Your little reset</h2>
-      <span class="muted">Small steps, real progress</span>
-    </div>
-
-    <!-- 31. Main dashboard -->
-    <main class="dashboard" id="main-content">
-      <!-- 32. Habit tracker -->
-      <section class="panel wide" id="habits-panel" aria-labelledby="habits-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="habits-heading">Today's little habits</h3>
-            <div class="muted">Tiny promises to yourself 🌱</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">☀️</span>
-        </div>
-        <div class="habit-list" id="habit-list" aria-live="polite"></div>
-        <form class="add-row" id="habit-form">
-          <input class="text-input" id="habit-input" maxlength="70" placeholder="Add a little habit..." aria-label="New habit" autocomplete="off" required>
-          <button class="primary-button" type="submit">Add +</button>
-        </form>
-        <div style="margin-top:18px">
-          <div class="muted" id="habit-progress-label">0 of 0 habits complete</div>
-          <div class="progress-track" role="progressbar" aria-label="Today's habit completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="habit-progress-track">
-            <div class="progress-fill" id="habit-progress"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 33. Progress statistics -->
-      <section class="panel" id="progress-panel" aria-labelledby="progress-heading">
-        <div class="panel-title">
-          <h3 id="progress-heading">Your progress</h3>
-          <span class="panel-icon" aria-hidden="true">✨</span>
-        </div>
-        <div class="stats">
-          <div class="stat"><strong id="stat-habits">0</strong><span>Habits today</span></div>
-          <div class="stat"><strong id="stat-streak">0</strong><span>Day streak</span></div>
-          <div class="stat"><strong id="stat-journal">0</strong><span>Journal notes</span></div>
-        </div>
-        <p class="muted" style="margin:15px 0 0">Every little effort matters. Celebrate the progress you make, not just the finish line.</p>
-      </section>
-
-      <!-- 34. Mood check-in -->
-      <section class="panel" id="mood-panel" aria-labelledby="mood-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="mood-heading">How are you feeling?</h3>
-            <div class="muted">Check in with yourself.</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">💗</span>
-        </div>
-        <div class="mood-options" id="mood-options">
-          <button type="button" class="mood-button" data-mood="Amazing" aria-label="Feeling amazing" aria-pressed="false">🤩<span>Amazing</span></button>
-          <button type="button" class="mood-button" data-mood="Happy" aria-label="Feeling happy" aria-pressed="false">😊<span>Happy</span></button>
-          <button type="button" class="mood-button" data-mood="Okay" aria-label="Feeling okay" aria-pressed="false">😌<span>Okay</span></button>
-          <button type="button" class="mood-button" data-mood="Sad" aria-label="Feeling sad" aria-pressed="false">🥺<span>Sad</span></button>
-          <button type="button" class="mood-button" data-mood="Stressed" aria-label="Feeling stressed" aria-pressed="false">😵‍💫<span>Stressed</span></button>
-        </div>
-        <p class="muted" id="mood-message" aria-live="polite" style="margin:14px 0 0">Whatever you're feeling, you don't have to judge it.</p>
-      </section>
-
-      <!-- 35. Water tracker -->
-      <section class="panel" id="water-panel" aria-labelledby="water-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="water-heading">Drink some water</h3>
-            <div class="muted">A little hydration break 💧</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">🥤</span>
-        </div>
-        <p class="water-summary" id="water-count" aria-live="polite">0 of 8 cups</p>
-        <div class="progress-track" role="progressbar" aria-label="Water cups completed" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="water-progress-track">
-          <div class="progress-fill" id="water-progress"></div>
-        </div>
-        <div class="water-cups" id="water-cups"></div>
-        <button class="secondary-button" id="water-reset" type="button">Reset cups</button>
-        <p class="muted" style="margin:12px 0 0">Tap a cup to set your total. Your needs may vary from day to day.</p>
-      </section>
-
-      <!-- 36. Growing garden -->
-      <section class="panel" id="garden-panel" aria-labelledby="garden-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="garden-heading">Your little garden</h3>
-            <div class="muted">Care for yourself, grow your garden.</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">🪴</span>
-        </div>
-        <div class="garden">
-          <div class="garden-plant" id="garden-plant" aria-hidden="true">🌱</div>
-          <strong id="garden-title">A new beginning</strong>
-          <p class="muted" id="garden-message" style="margin:8px 0 0">Your little garden is just getting started.</p>
-          <div class="garden-progress" role="progressbar" aria-label="Garden growth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="garden-progress-track">
-            <div class="garden-progress-fill" id="garden-progress"></div>
-          </div>
-          <div class="muted" id="garden-progress-label">Keep showing up for yourself.</div>
-        </div>
-      </section>
-
-      <!-- 37. Journal -->
-      <section class="panel wide" id="journal-panel" aria-labelledby="journal-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="journal-heading">A page for your thoughts</h3>
-            <div class="muted">Let it out. This space is yours. 📝</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">📖</span>
-        </div>
-        <form class="journal-form" id="journal-form">
-          <textarea id="journal-input" maxlength="3000" placeholder="What's on your mind today? What are you grateful for? What do you need to let go of?" aria-label="Write a journal entry" required></textarea>
-          <div class="muted" id="journal-character-count">0 / 3000 characters</div>
-          <button class="primary-button" type="submit">Save my thoughts ♡</button>
-        </form>
-        <div class="section-heading">
-          <h3>Recent reflections</h3>
-          <span class="muted" id="journal-total-label">0 saved</span>
-        </div>
-        <div id="journal-entries" aria-live="polite"></div>
-      </section>
-
-      <!-- 38. Affirmation -->
-      <section class="panel" id="affirmation-panel" aria-labelledby="affirmation-heading">
-        <div class="panel-title">
-          <h3 id="affirmation-heading">A little reminder</h3>
-          <span class="panel-icon" aria-hidden="true">💌</span>
-        </div>
-        <div class="affirmation" id="affirmation-text" aria-live="polite">You are allowed to grow at your own pace.</div>
-        <button class="secondary-button" id="new-affirmation" type="button">Another reminder ✨</button>
-      </section>
-
-      <!-- 39. Breathing exercise -->
-      <section class="panel" id="reset-panel" aria-labelledby="reset-heading">
-        <div class="panel-title">
-          <div>
-            <h3 id="reset-heading">Your mini reset</h3>
-            <div class="muted">Pause for a moment.</div>
-          </div>
-          <span class="panel-icon" aria-hidden="true">🌸</span>
-        </div>
-        <div class="reset-box">
-          <div class="breath-circle" id="breath-circle">Breathe</div>
-          <p class="muted" id="breath-message" aria-live="polite">You can take a moment for yourself.</p>
-          <button class="primary-button" id="breath-button" type="button" aria-pressed="false">Start breathing</button>
-        </div>
-      </section>
-    </main>
-
-    <!-- 40. Footer -->
-    <footer class="footer-note">
-      Made with love, for the days you need a little extra softness. 🌷<br>
-      Bloom at your own pace.
-    </footer>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <!-- 41. Application logic -->
-  <script>
-    'use strict';
-
-    // 42. Tiny DOM helpers
-    const $ = (selector, root = document) => root.querySelector(selector);
-    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-    // 43. Storage keys are kept together to avoid accidental typos.
-    const STORAGE_KEYS = {
-      habits: 'bloom-habits',
-      water: 'bloom-water',
-      moods: 'bloom-moods',
-      journal: 'bloom-journal',
-      completedDays: 'bloom-completed-days',
-      darkMode: 'bloom-dark-mode',
-      habitDate: 'bloom-habit-date'
-    };
-
-    // 44. Read saved data safely. Bad or unavailable storage falls back gracefully.
-    function loadData(key, fallback) {
-      try {
-        const saved = localStorage.getItem(key);
-        return saved === null ? fallback : JSON.parse(saved);
-      } catch (error) {
-        console.warn('Bloom could not read saved data for:', key, error);
-        return fallback;
-      }
-    }
-
-    // 45. Save data safely so storage issues do not crash the whole app.
-    function saveData(key, value) {
-      try {
-        localStorage.setItem(key, JSON.stringify(value));
-        return true;
-      } catch (error) {
-        console.warn('Bloom could not save this item:', key, error);
-        showToast('Your browser could not save this change.');
-        return false;
-      }
-    }
-
-    // 46. Use local calendar dates, not UTC dates, for daily tracking.
-    function localDateKey(date = new Date()) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    }
-
-    // 47. Display a readable date for journal cards.
-    function formatDateTime(value) {
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) return String(value || 'Saved reflection');
-      return date.toLocaleString(undefined, {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit'
-      });
-    }
-
-    // 48. Small toast helper. A previous timer is cancelled before a new message.
-    let toastTimer = null;
-    function showToast(message) {
-      const toast = $('#toast');
-      if (!toast) return;
-      toast.textContent = message;
-      toast.classList.add('show');
-      window.clearTimeout(toastTimer);
-      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
-    }
-
-    // 49. Default habit list for a brand-new user.
-    const defaultHabits = [
-      { id: 1, name: 'Drink a glass of water', done: false },
-      { id: 2, name: 'Take a little break', done: false },
-      { id: 3, name: 'Move my body', done: false },
-      { id: 4, name: 'Do something just for me', done: false }
-    ];
-
-    // 50. Affirmations shown when the user asks for another reminder.
-    const affirmations = [
-      'You are allowed to grow at your own pace.',
-      'Rest is productive, too.',
-      'You do not need to earn your rest.',
-      'Small steps are still steps forward.',
-      'You deserve the same kindness you give others.',
-      'You can begin again as many times as you need.',
-      'Progress does not have to be perfect.',
-      'You are more than what you get done today.',
-      'It is okay to take things one day at a time.',
-      'You are becoming, and that is enough.',
-      'A hard day does not erase your progress.',
-      'You can do less and still be worthy of care.',
-      'You are allowed to make room for joy.',
-      'You do not have to bloom every single day.',
-      'Be proud of the small things you did today.'
-    ];
-
-    // 51. Current day and saved state
-    let today = localDateKey();
-    let habits = loadData(STORAGE_KEYS.habits, defaultHabits);
-    let water = loadData(STORAGE_KEYS.water, { date: today, count: 0 });
-    let moods = loadData(STORAGE_KEYS.moods, {});
-    let journal = loadData(STORAGE_KEYS.journal, []);
-    let completedDays = loadData(STORAGE_KEYS.completedDays, []);
-    let darkMode = loadData(STORAGE_KEYS.darkMode, false);
-    let habitDate = loadData(STORAGE_KEYS.habitDate, today);
-    let breathing = false;
-    let breathInterval = null;
-    let affirmationIndex = 0;
-
-    // 52. Normalize saved values in case an older version saved malformed data.
-    if (!Array.isArray(habits)) habits = defaultHabits.map(habit => ({ ...habit }));
-    habits = habits
-      .filter(habit => habit && typeof habit.name === 'string')
-      .map((habit, index) => ({
-        id: Number.isFinite(Number(habit.id)) ? Number(habit.id) : Date.now() + index,
-        name: habit.name.slice(0, 70),
-        done: Boolean(habit.done)
-      }));
-
-    if (!water || typeof water !== 'object') water = { date: today, count: 0 };
-    water.count = Math.min(8, Math.max(0, Number.parseInt(water.count, 10) || 0));
-    if (!moods || typeof moods !== 'object' || Array.isArray(moods)) moods = {};
-    if (!Array.isArray(journal)) journal = [];
-    journal = journal.filter(entry => entry && typeof entry.text === 'string');
-    if (!Array.isArray(completedDays)) completedDays = [];
-
-    // 53. Reset only daily habit completion when the calendar day changes.
-    if (habitDate !== today) {
-      habits = habits.map(habit => ({ ...habit, done: false }));
-      habitDate = today;
-      saveData(STORAGE_KEYS.habits, habits);
-      saveData(STORAGE_KEYS.habitDate, habitDate);
-    }
-
-    // 54. Water counts restart on a new local day.
-    if (water.date !== today) {
-      water = { date: today, count: 0 };
-      saveData(STORAGE_KEYS.water, water);
-    }
-
-    // 55. Apply saved theme as early as possible.
-    document.body.classList.toggle('dark', Boolean(darkMode));
-    $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
-    $('#theme-button').setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
-
-    // 56. Today's date label.
-    $('#date-label').textContent = new Date().toLocaleDateString(undefined, {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-
-    // 57. Update the completion-day history based on today's habits.
-    function checkCompletedDay() {
-      const allDone = habits.length > 0 && habits.every(habit => habit.done);
-      if (allDone && !completedDays.includes(today)) {
-        completedDays.push(today);
-      }
-      if (!allDone) {
-        completedDays = completedDays.filter(day => day !== today);
-      }
-      completedDays = Array.from(new Set(completedDays)).sort();
-      saveData(STORAGE_KEYS.completedDays, completedDays);
-      renderStats();
-      updateGarden();
-    }
-
-    // 58. Render all habit rows using DOM methods instead of injecting user text as HTML.
-    function renderHabits() {
-      const list = $('#habit-list');
-      list.replaceChildren();
-
-      if (habits.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'empty-state';
-        empty.textContent = 'No habits yet. Add one small thing you would like to do for yourself.';
-        list.appendChild(empty);
-      }
-
-      habits.forEach(habit => {
-        const row = document.createElement('div');
-        row.className = `habit${habit.done ? ' done' : ''}`;
-
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = Boolean(habit.done);
-        checkbox.setAttribute('aria-label', `Mark ${habit.name} complete`);
-        checkbox.addEventListener('change', () => {
-          habits = habits.map(item => item.id === habit.id
-            ? { ...item, done: checkbox.checked }
-            : item);
-          saveData(STORAGE_KEYS.habits, habits);
-          checkCompletedDay();
-          renderHabits();
-          showToast(checkbox.checked ? 'One little promise kept 🌷' : 'Habit unchecked. You can try again.');
-        });
-
-        const name = document.createElement('span');
-        name.className = 'habit-name';
-        name.textContent = habit.name;
-
-        const remove = document.createElement('button');
-        remove.className = 'delete-button';
-        remove.type = 'button';
-        remove.textContent = 'Remove';
-        remove.setAttribute('aria-label', `Delete ${habit.name}`);
-        remove.addEventListener('click', () => {
-          habits = habits.filter(item => item.id !== habit.id);
-          saveData(STORAGE_KEYS.habits, habits);
-          checkCompletedDay();
-          renderHabits();
-          showToast('Habit removed.');
-        });
-
-        row.append(checkbox, name, remove);
-        list.appendChild(row);
-      });
-
-      const done = habits.filter(habit => habit.done).length;
-      const total = habits.length;
-      const percent = total ? Math.round((done / total) * 100) : 0;
-      $('#habit-progress-label').textContent = `${done} of ${total} habits complete`;
-      $('#habit-progress').style.width = `${percent}%`;
-      $('#habit-progress-track').setAttribute('aria-valuenow', String(percent));
-      $('#stat-habits').textContent = String(done);
-    }
-
-    // 59. Add a new habit.
-    $('#habit-form').addEventListener('submit', event => {
-      event.preventDefault();
-      const input = $('#habit-input');
-      const name = input.value.trim();
-      if (!name) {
-        input.focus();
-        return;
-      }
-      if (habits.some(habit => habit.name.toLowerCase() === name.toLowerCase())) {
-        showToast('That habit is already on your list.');
-        input.focus();
-        return;
-      }
-      habits.push({ id: Date.now(), name: name.slice(0, 70), done: false });
-      saveData(STORAGE_KEYS.habits, habits);
-      saveData(STORAGE_KEYS.habitDate, today);
-      habitDate = today;
-      input.value = '';
-      checkCompletedDay();
-      renderHabits();
-      input.focus();
-      showToast('A new little habit has been planted 🌱');
-    });
-
-    // 60. Calculate a current streak without replacing any other statistic.
-    function calculateStreak() {
-      const completed = new Set(completedDays);
-      let streak = 0;
-      const date = new Date();
-      while (completed.has(localDateKey(date))) {
-        streak += 1;
-        date.setDate(date.getDate() - 1);
-      }
-      return streak;
-    }
-
-    // 61. Render the statistics panel.
-    function renderStats() {
-      $('#stat-streak').textContent = String(calculateStreak());
-      $('#stat-journal').textContent = String(journal.length);
-    }
-
-    // 62. Water tracker rendering.
-    function renderWater() {
-      const holder = $('#water-cups');
-      holder.replaceChildren();
-
-      for (let i = 1; i <= 8; i += 1) {
-        const cup = document.createElement('button');
-        cup.type = 'button';
-        cup.className = `water-cup${i <= water.count ? ' filled' : ''}`;
-        cup.textContent = i <= water.count ? '💧' : '🥛';
-        cup.setAttribute('aria-label', `Set water intake to ${i} cups`);
-        cup.setAttribute('aria-pressed', String(i === water.count));
-        cup.addEventListener('click', () => {
-          water = { date: today, count: i };
-          saveData(STORAGE_KEYS.water, water);
-          renderWater();
-          showToast(`${i} of 8 cups logged 💧`);
-        });
-        holder.appendChild(cup);
-      }
-
-      $('#water-count').textContent = `${water.count} of 8 cups`;
-      $('#water-progress').style.width = `${(water.count / 8) * 100}%`;
-      $('#water-progress-track').setAttribute('aria-valuenow', String(water.count));
-    }
-
-    // 63. Reset water for today.
-    $('#water-reset').addEventListener('click', () => {
-      water = { date: today, count: 0 };
-      saveData(STORAGE_KEYS.water, water);
-      renderWater();
-      showToast('Water tracker reset.');
-    });
-
-    // 64. Mood messages keep the tone gentle and non-judgmental.
-    const moodMessages = {
-      Amazing: 'You checked in as feeling amazing. Let yourself enjoy this moment! ✨',
-      Happy: 'You checked in as feeling happy. I hope you get to hold on to a little of that joy. 💗',
-      Okay: 'You checked in as feeling okay. Okay is a perfectly valid place to be.',
-      Sad: 'You checked in as feeling sad. You do not have to force yourself to feel better right now. 💗',
-      Stressed: 'You checked in as feeling stressed. Take one thing at a time; you do not have to solve everything at once.'
-    };
-
-    // 65. Display today's mood selection.
-    function renderMood() {
-      const mood = moods[today];
-      $$('.mood-button').forEach(button => {
-        const selected = button.dataset.mood === mood;
-        button.classList.toggle('selected', selected);
-        button.setAttribute('aria-pressed', String(selected));
-      });
-      $('#mood-message').textContent = mood
-        ? (moodMessages[mood] || `You checked in as feeling ${String(mood).toLowerCase()}. Be gentle with yourself today.`)
-        : "Whatever you're feeling, you don't have to judge it.";
-    }
-
-    // 66. Save mood selection for today's date.
-    $$('.mood-button').forEach(button => {
-      button.addEventListener('click', () => {
-        moods[today] = button.dataset.mood;
-        saveData(STORAGE_KEYS.moods, moods);
-        renderMood();
-        showToast('Mood check-in saved 💗');
-      });
-    });
-
-    // 67. Render recent journal entries.
-    function renderJournal() {
-      const holder = $('#journal-entries');
-      holder.replaceChildren();
-      $('#journal-total-label').textContent = `${journal.length} saved`;
-
-      if (journal.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'empty-state';
-        empty.textContent = 'Your reflections will appear here when you save your first entry. 💗';
-        holder.appendChild(empty);
-        return;
-      }
-
-      journal.slice(0, 5).forEach(entry => {
-        const card = document.createElement('article');
-        card.className = 'journal-entry';
-
-        const topLine = document.createElement('div');
-        topLine.className = 'entry-topline';
-
-        const date = document.createElement('div');
-        date.className = 'entry-date';
-        date.textContent = formatDateTime(entry.createdAt || entry.date);
-
-        const mood = document.createElement('span');
-        mood.className = 'entry-mood';
-        mood.textContent = entry.mood ? (entry.moodEmoji || '💗') : '';
-        mood.setAttribute('aria-label', entry.mood ? `Mood: ${entry.mood}` : '');
-
-        const text = document.createElement('div');
-        text.className = 'entry-text';
-        text.textContent = entry.text;
-
-        const actions = document.createElement('div');
-        actions.className = 'journal-actions';
-        const remove = document.createElement('button');
-        remove.type = 'button';
-        remove.className = 'delete-button';
-        remove.textContent = 'Delete entry';
-        remove.setAttribute('aria-label', 'Delete this journal entry');
-        remove.addEventListener('click', () => {
-          journal = journal.filter(item => item.id !== entry.id);
-          saveData(STORAGE_KEYS.journal, journal);
-          renderJournal();
-          renderStats();
-          updateGarden();
-          showToast('Reflection deleted.');
-        });
-
-        topLine.append(date, mood);
-        actions.appendChild(remove);
-        card.append(topLine, text, actions);
-        holder.appendChild(card);
-      });
-    }
-
-    // 68. Character count for the journal text area.
-    $('#journal-input').addEventListener('input', () => {
-      const length = $('#journal-input').value.length;
-      $('#journal-character-count').textContent = `${length} / 3000 characters`;
-    });
-
-    // 69. Save a journal entry.
-    $('#journal-form').addEventListener('submit', event => {
-      event.preventDefault();
-      const input = $('#journal-input');
-      const text = input.value.trim();
-      if (!text) {
-        input.focus();
-        return;
-      }
-      const mood = moods[today] || '';
-      const moodEmoji = {
-        Amazing: '🤩',
-        Happy: '😊',
-        Okay: '😌',
-        Sad: '🥺',
-        Stressed: '😵‍💫'
-      }[mood] || '';
-
-      journal.unshift({
-        id: Date.now(),
-        createdAt: new Date().toISOString(),
-        date: new Date().toLocaleString(),
-        text: text.slice(0, 3000),
-        mood,
-        moodEmoji
-      });
-
-      saveData(STORAGE_KEYS.journal, journal);
-      input.value = '';
-      $('#journal-character-count').textContent = '0 / 3000 characters';
-      renderJournal();
-      renderStats();
-      updateGarden();
-      showToast('Your thoughts have been saved 💌');
-    });
-
-    // 70. Garden growth is based on small actions over time.
-    function updateGarden() {
-      const habitPoints = habits.filter(habit => habit.done).length;
-      const journalPoints = Math.min(journal.length, 15);
-      const streakPoints = Math.min(completedDays.length, 15);
-      const points = habitPoints + journalPoints + streakPoints;
-      let plant = '🌱';
-      let title = 'A new beginning';
-      let message = 'Your little garden is just getting started.';
-      let level = 1;
-      let nextLevelAt = 5;
-
-      if (points >= 5) {
-        plant = '🌿';
-        title = 'Growing gently';
-        message = 'Look at you, making space for yourself.';
-        level = 2;
-        nextLevelAt = 12;
-      }
-      if (points >= 12) {
-        plant = '🪴';
-        title = 'Growing stronger';
-        message = 'Your small steps are adding up.';
-        level = 3;
-        nextLevelAt = 25;
-      }
-      if (points >= 25) {
-        plant = '🌷';
-        title = 'Look at you bloom!';
-        message = 'Keep showing up for yourself, one day at a time.';
-        level = 4;
-        nextLevelAt = 35;
-      }
-
-      const previousPlant = $('#garden-plant').textContent;
-      $('#garden-plant').textContent = plant;
-      $('#garden-title').textContent = title;
-      $('#garden-message').textContent = message;
-      $('#garden-plant').classList.toggle('grow', previousPlant !== plant);
-
-      const progress = level === 4
-        ? 100
-        : Math.min(100, Math.round((points / nextLevelAt) * 100));
-      $('#garden-progress').style.width = `${progress}%`;
-      $('#garden-progress-track').setAttribute('aria-valuenow', String(progress));
-      $('#garden-progress-label').textContent = level === 4
-        ? 'Your garden is blooming beautifully.'
-        : `${Math.max(0, nextLevelAt - points)} little points to the next stage.`;
-    }
-
-    // 71. Pick a different affirmation each time if possible.
-    $('#new-affirmation').addEventListener('click', () => {
-      if (affirmations.length < 2) return;
-      let nextIndex = affirmationIndex;
-      while (nextIndex === affirmationIndex) {
-        nextIndex = Math.floor(Math.random() * affirmations.length);
-      }
-      affirmationIndex = nextIndex;
-      $('#affirmation-text').textContent = affirmations[affirmationIndex];
-    });
-
-    // 72. Dark-mode toggle persists between visits.
-    $('#theme-button').addEventListener('click', () => {
-      darkMode = !darkMode;
-      document.body.classList.toggle('dark', darkMode);
-      $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
-      $('#theme-button').setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
-      saveData(STORAGE_KEYS.darkMode, darkMode);
-      showToast(darkMode ? 'A softer, darker theme 🌙' : 'Back to the light theme ☀️');
-    });
-
-    // 73. The welcome button scrolls to the dashboard.
-    $('#start-button').addEventListener('click', () => {
-      $('#dashboard-heading').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      $('#habit-input').focus({ preventScroll: true });
-    });
-
-    // 74. Breathing exercise can be started and stopped without leaving intervals running.
-    function stopBreathing(showCompletion = true) {
-      breathing = false;
-      if (breathInterval !== null) {
-        window.clearInterval(breathInterval);
-        breathInterval = null;
-      }
-      $('#breath-circle').classList.remove('breathing');
-      $('#breath-circle').textContent = 'Breathe';
-      $('#breath-button').textContent = 'Start breathing';
-      $('#breath-button').setAttribute('aria-pressed', 'false');
-      $('#breath-message').textContent = showCompletion
-        ? 'Well done for taking a moment for yourself. 💗'
-        : 'You can take a moment for yourself.';
-    }
-
-    // 75. Toggle the breathing animation and inhale/exhale prompts.
-    $('#breath-button').addEventListener('click', () => {
-      const circle = $('#breath-circle');
-      const message = $('#breath-message');
-      const button = $('#breath-button');
-
-      if (breathing) {
-        stopBreathing(true);
-        return;
-      }
-
-      breathing = true;
-      circle.classList.add('breathing');
-      circle.textContent = 'Breathe in...';
-      message.textContent = 'Breathe in slowly for four seconds, then breathe out gently.';
-      button.textContent = 'Finish reset';
-      button.setAttribute('aria-pressed', 'true');
-
-      let inhale = true;
-      breathInterval = window.setInterval(() => {
-        if (!breathing) return;
-        inhale = !inhale;
-        circle.textContent = inhale ? 'Breathe in...' : 'Breathe out...';
-      }, 4000);
-    });
-
-    // 76. Stop any active breathing interval if the page is being hidden.
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden && breathing) stopBreathing(false);
-    });
-
-    // 77. Highlight the current navigation destination while links are used.
-    $$('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        $$('.nav-link').forEach(item => item.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-
-    // 78. Refresh the date-dependent state if the page stays open overnight.
-    function refreshDayIfNeeded() {
-      const newToday = localDateKey();
-      if (newToday === today) return;
-
-      today = newToday;
-      habits = habits.map(habit => ({ ...habit, done: false }));
-      habitDate = today;
-      water = { date: today, count: 0 };
-      saveData(STORAGE_KEYS.habits, habits);
-      saveData(STORAGE_KEYS.habitDate, habitDate);
-      saveData(STORAGE_KEYS.water, water);
-
-      $('#date-label').textContent = new Date().toLocaleDateString(undefined, {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-      renderHabits();
-      renderWater();
-      renderMood();
-      checkCompletedDay();
-      updateGarden();
-    }
-
-    // 79. Recheck the date when the tab becomes visible again.
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) refreshDayIfNeeded();
-    });
-
-    // 80. Save normalized values back to storage for consistency.
-    saveData(STORAGE_KEYS.habits, habits);
-    saveData(STORAGE_KEYS.water, water);
-    saveData(STORAGE_KEYS.moods, moods);
-    saveData(STORAGE_KEYS.journal, journal);
-    saveData(STORAGE_KEYS.completedDays, completedDays);
-
-    // 81. Initial render: all UI sections get drawn from the saved state.
-    renderHabits();
-    renderStats();
-    renderWater();
-    renderMood();
-    renderJournal();
-    updateGarden();
-  </script>
-</body>
-</html>
-Displaying bloom-index-code.txt.
+    <head>
+        <!--01.Document setup-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#fff7f8">
+        <meta name="description" content="Bloom is your gentle space for habits, hydration, journaling, and little resets.">
+        <title>Bloom - Your Little Reset</title>
+
+        <!--02. Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis/com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+        <!--03. Styles-->
+        <style>
+            /* 04. Theme variables */
+            :root {
+                color-scheme: light;
+                --bg: #fff8f8;
+                --surface: #ffffff;
+                --surface-soft: #fff1f4;
+                --pink: #e99cae;
+                --pink-dark: #c76f88;
+                --pink-light: #fde8ed;
+                --text: #44373d;
+                --muted: #917f87;
+                --border: #f2dfe5;
+                --green: #9ebda5;
+                --green-soft: #e8f2e9;
+                --yellow: #f3dca0;
+                --blue-soft: #e3f3f8;
+                --shadow: 0 8px 38px rgba(160, 105, 125, 0.08);
+                --radius-lg: 24px;
+                --radius-md: 16px;
+                --radius-sm: 12px;
+                --content-width: 1120px;
+            }
+
+            /*05. Dark theme*/
+            body.dark {
+                color-scheme: dark;
+                --bg: #211c24;
+                --surface: #302832;
+                --surface-soft: #3a2b36;
+                --pink: #e7a0b5;
+                --pink-dark: #e7a0b5;
+                --pink-light: #48313d;
+                --text: #f8edf1;
+                --muted: #c1aeb9;
+                --border: #4c3c49;
+                --green: #a5c7ac;
+                --green-soft: #2e4035;
+                --yellow: #e8d49a;
+                --blue-soft: #2b4148;
+                --shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+            }
+
+            /* 06. Global rest */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 20px;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                background: var(--bg);
+                color: var(--text);
+                font-family: 'DM Sans', sans-serif;
+                transition: background 0.25s ease, color 0.25s ease;
+            }
+
+            button,
+            input,
+            textarea,
+            select {
+                font: inherit;
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            button:focus-visible,
+            input:focus-visible,
+            textarea:focus-visible,
+            select:focus-visible,
+            a:focus-visible {
+                outline: 3px solid var(--pink);
+                outline-offset: 3px;
+            }
+
+            button:disabled {
+                cursor: not-allowed;
+                opacity: 0.55;
+            }
+
+            a {
+                color: var(--pink-dark);
+            }
+
+            img,
+            svg {
+                max-width: 100%;
+            }
+
+            /* 07. Main layout */
+            .container {
+                width: min(var(--content-width),92%);
+                margin-inline: auto;
+            }
+
+            .skip-link {
+                position: absolute;
+                top: -100px;
+                left: 12px;
+                z-index: 100;
+                padding: 10px 14px;
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius-sm);
+            }
+
+            .skip-link:focus {
+                top: 12px;
+            }
+
+            /* 08. Header */
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 16px;
+                padding: 22px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .brand { 
+                font-family: 'Playfair Display', serif;
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 1.05;
+                color: var(--pink-dark);
+                letter-spacing: -0.8px;
+            }
+
+            .brand small {
+                display: block;
+                margin-top: 5px;
+                font: 700 10px 'DM Sans', sans-serif;
+                color: var(--muted);
+                letter-spacing: 1.7px;
+            }
+
+            .header-actions { 
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 9px;
+            }
+
+            .icon-button,
+            .secondary-button {
+                min-height: 42px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                border-radius: 14px;
+                padding: 10px 14px;
+                transition: transform 0.15s ease, border-color 0.15s ease;
+            }
+
+            .icon-button:hover,
+            .secondary-button:hover {
+                border-color: var(--pink);
+                transform: translateY(-1px);
+            }
+
+            /* 09. Navigation */
+            .main-nav {
+                display: flex;
+                gap: 8px;
+                overflow-x: auto;
+                padding: 13px 0 3px;
+                scrollbar-width: thin;
+            }
+
+            .nav-link {
+                flex: 0 0 auto;
+                padding: 9px 13px;
+                border: 1px solid transparent;
+                border-radius: 999px;
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 13px;
+                font-weight: 700;
+            }
+
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--pink-dark);
+                background: var(--pink-light);
+                border-color: var(--border);
+            }
+
+            /* 10. Hero */
+            .hero {
+                display: grid;
+                grid-template-columns: 1.5fr 1fr;
+                align-items: center;
+                gap: 28px;
+                padding: 38px 0 25px;
+            }
+
+            .eyebrow {
+                color: var(--pink-dark);
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+            }
+
+            h1,
+            h2,
+            h3,
+            p {
+                margin-top: 0;
+            }
+
+            h1 { 
+                margin: 12px 0;
+                font: 500 clamp(35px, 5vw, 55px)/1.12'Playfair Display',serif; 
+                letter-spacing: -1px;
+            }
+
+            h1 span {
+                color: var(--pink-dark);
+                font-style: italic;
+            }
+
+            .hero-copy {
+                max-width: 620px;
+                color: var(--muted);
+                line-height: 1.8;
+            }
+
+            .primary-button {
+                min-height: 43px;
+                border:0;
+                border-radius: 14px;
+                background: var(--pink-dark);
+                color: #fff;
+                padding: 12px 18px;
+                font-weight: 700;
+                box-shadow: 0 5px 16px rgba(199, 111, 136, 0.15);
+                transition: opacity 0.15s ease, transform 0.15s ease;
+            }
+
+            .primary-button:hover {
+                opacity: 0.9;
+                transform: translateY(-1px);
+            }
+
+            .hero-card {
+                padding: 25px;
+                border: 1px solid var(--border);
+                border-radius: 27px;
+                background: var(--pink-light);
+                text-align: center;
+            }
+
+            
