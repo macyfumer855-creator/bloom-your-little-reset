@@ -9,7 +9,7 @@
         <title>Bloom - Your Little Reset</title>
 
         <!--02. Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis/com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 
@@ -237,7 +237,7 @@
 
             h1 { 
                 margin: 12px 0;
-                font: 500 clamp(35px, 5vw, 55px)/1.12'Playfair Display',serif; 
+                font: 500 clamp(35px, 5vw, 55px)/1.12 'Playfair Display', serif;
                 letter-spacing: -1px;
             }
 
@@ -277,4 +277,1759 @@
                 text-align: center;
             }
 
+            .hero-flower {
+                margin-bottom: 8px;
+                font-size: 55px;
+            }
+
+            .hero-card h3 {
+                margin-bottom: 8px;
+            }
+
+            .hero-card p {
+                margin-bottom: 0;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+
+            .date-line {
+                margin-top: 13px;
+                color: var(--muted);
+                font-size: 13px;
+            }
+
+            /* 11. Section headings */
+            .section-heading {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin: 25px 0 15px;
+            }
+
+            h2 {
+                margin-bottom: 0;
+                font: 600 25px 'Playfair Display', serif;
+            }
+
+            h3 {
+                margin-bottom: 8px;
+                font-size: 16px;
+            }
+
+            .muted {
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            /* 12. Dashboard grid */
+            .dashboard {
+                display: grid;
+               grid-template-columns: repeat(3, minmax(0, 1fr));
+                align-items: start;
+                gap: 16px;
+                padding-bottom: 30px;
+            }
+
+            .panel {
+                min-width: 0;
+                padding: 21px;
+                border: 1px solid var(--border);
+                border-radius: 22px;
+                background: var(--surface);
+                box-shadow: var(--shadow);
+            }
+
+            .wide {
+                grid-column: span 2;
+            }
+
+            .full {
+                grid-column: 1 / -1;
+            }
+
+            .panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+                .panel-title h3 {
+                    margin-bottom: 3px;
+                }
+
+                .panel-icon {
+                    flex: 0 0 auto;
+                    font-size: 23px;
+                }
+
+                /* 13. Habit list */
+                .habit-list {
+                    display: grid;
+                    gap: 9px;
+                }
+
+                .habit {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    min-width: 0;
+                    padding: 11px;
+                    border-radius: 13px;
+                    background: var(--bg);
+                    transition: background 0.2s ease;
+                }
+
+                .habit input {
+                    flex: 0 0 auto;
+                    width: 18px;
+                    height: 18px;
+                    accent-color: var(--pink-dark);
+                }
+
+                .habit-name {
+                    flex: 1;
+                    overflow-wrap: anywhere;
+                    line-height: 1.45;
+                }
+
+                 .habit.done .habit-name {
+                    color: var(--muted);
+                    text-decoration: line-through;
+                }
+
+                .delete-button {
+                    flex: 0 0 auto;
+                    border: 0;
+                    border-radius: 8px;
+                    background: transparent;
+                    color: var(--muted);
+                    padding: 5px 7px;
+                    font-size: 12px;
+                }
+
+                .delete-button:hover {
+                    color: var(--pink-dark);
+                    background: var(--pink-light);
+                }
+
+                .add-row {
+                    display:flex;
+                    gap: 8px;
+                    margin-top: 14px;
+                }
+
+                .text-input,
+                textarea,
+                select {
+                    width: 100%;
+                    min-width: 0;
+                    border: 1px solid var(--border);
+                    border-radius: 12px;
+                    background: var(--bg);
+                    color: var(--text);
+                    padding: 12px;
+                }
+
+                .text-input::placeholder,
+                textarea::placeholder {
+                    color: var(--muted);
+                    opacity: 0.85;
+                }
+
+                .add-row .primary-button {
+                    flex: 0 0 auto;
+                    padding-inline: 15px;
+                }
+
+                /* 14. Progress bar */
+                .progress-track {
+                    height: 9px;
+                    margin: 12px 0;
+                    overflow: hidden;
+                    border-radius: 20px;
+                    background: var(--pink-light);
+                }
+
+               .progress-fill {
+                width: 0;
+                height: 100%;
+                border-radius: inherit;
+                background: var(--pink-dark);
+                transition: width 0.3s ease;
+               }
+
+               /* 15. Stats */
+               .stats {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 9px;
+               }
+
+               .stat {
+                min-width: 0;
+                padding: 14px 6px;
+                border-radius: 14px;
+                background: var(--bg);
+                text-align: center;
+               }
+
+               .stat strong {
+                display: block;
+                color: var(--pink-dark);
+                font: 600 25px 'Playfair Display', serif;
+                overflow-wrap: anywhere;    
+               }
+
+               .stat span {
+                color: var(--muted);
+                font-size: 10px;
+                line-height: 1.4;
+               }
+
+               /* 16. Mood buttons */
+               .mood-options { 
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 7px;
+               }
+
+               .mood-button {
+                min-width: 0;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: var(--bg);
+                color: var(--text);
+                padding: 10px 2px;
+                font-size: 22px;
+                transition: background 0.15s ease, border-color 0.15s ease;
+               }
+
+               .mood-button span {
+                display: block;
+                margin-top: 4px;
+                font-size: 9px;
+               }
+
+               .mood-button:hover,
+               .mood-button.selected {
+                border-color: var(--pink-dark);
+                background: var(--pink-light);
+               }
+
+               /* 17. Water tracker */
+               .water-cups {
+                display: grid;
+               grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 9px;
+                margin: 15px 0;
+               }
+
+               .water-cup {
+                min-height: 61px;
+                border: 1px solid var(--border);
+                border-radius: 13px;
+                background: var(--bg);
+                color: var(--text);
+                font-size: 23px;
+                transition: background 0.15s ease, transform 0.15s ease;
+               }
+
+               .water-cup:hover {
+                transform: translateY(-1px);
+               }
+
+               .water-cup.filled {
+                border-color: #9acbdc;
+                background: var(--blue-soft);
+               }
+
+               .water-summary {
+                font-weight: 700;
+               }
+
+               /* 18. Garden */
+               .garden {
+                padding: 20px;
+                border-radius: 18px;
+                background: linear-gradient(180deg,var(--pink-light),var(--surface));
+                text-align: center;
+            }
+
+            .garden-plant {
+                margin: 10px;
+                font-size: 49px;
+                transition: transform 0.25s ease;
+            }
+
+            .garden-plant.grow {
+                transform: scale(1.08);
+            }
+
+            .garden-progress {
+                height: 7px;
+                margin: 14px 0 8px;
+                overflow: hidden;
+                border-radius: 99px;
+                background: var(--surface);
+            }
+
+            .garden-progress-fill {
+                width: 0;
+                height: 100%;
+                border-radius: inherit;
+                background: var(--green);
+                transition: width 0.3s ease;
+            }
+
+            /* 19. Journal */
+            .journal-form {
+                display: grid;
+                gap: 10px;
+            }
+
+            textarea {
+                min-height: 115px;
+                resize: vertical;
+                line-height: 1.6;
+            }
             
+            .journal-entry {
+                margin-top: 10px;
+                padding: 14px;
+                border-radius: 14px;
+                background: var(--bg);
+                overflow-wrap: anywhere;
+            }
+
+            .entry-topline {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 8px;
+            }
+
+            .entry-date {
+                color: var(--muted);
+                font-size: 11px;
+                line-height: 1.5;
+            }
+
+            .entry-mood {
+                font-size: 17px;
+            }
+
+            .entry-text {
+                white-space: pre-wrap;
+                line-height: 1.65;
+            }
+
+            .journal-actions {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 8px;
+            }
+
+            /* 20. Affirmation */
+            .affirmation {
+                padding: 12px 0;
+                font: italic 21px/1.5 'Playfair Display', serif;
+                text-align: center;
+            }
+
+            /* 21. Breathing reset */
+            .reset-box {
+                padding: 18px;
+                border-radius: 16px;
+                background: var(--bg);
+                text-align: center;
+            }
+
+            .breath-circle {
+                display: grid;
+                place-items: center;
+                width: 106px;
+                height: 106px;
+                margin: 16px auto;
+                border: 2px solid var(--pink);
+                border-radius: 50%;
+                background: var(--pink-light);
+                font-size: 13px;
+                font-weight: 700;
+            }
+
+            .breath-circle.breathing {
+                animation: breathe 8s ease-in-out infinite;
+            }
+
+            @keyframes breathe {
+                0%, 100% { transform: scale(0.85);}
+                50% {transform: scale(1.13);}
+            }
+
+            /* 22. Toast messages */
+            .toast {
+                position: fixed;
+                right: 18px;
+                bottom: 18px;
+                z-index: 50;
+                max-width: min(360px, calc(100vw - 36px));
+                padding: 13px 16px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: var(--surface);
+                color: var(--text);
+                box-shadow: var(--shadow);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-0.8px);
+                transition: opacity 0.2s ease, transform 0.2s ease;
+            }
+
+            .toast.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* 23. Empty states and footer */
+            .empty-state {
+                margin: 8px 0;
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            .footer-note {
+                padding: 15px 0 35px;
+                color: var(--muted);
+                font-size: 12px;
+                line-height: 1.7;
+                text-align: center;
+            }
+
+
+            /* 24. Daily reset streak and checklist */
+            .streak-card {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                gap: 16px;
+                padding: 18px;
+                border-radius: 18px;
+                background: linear-gradient(135deg, var(--pink-light), var(--green-soft));
+            }
+            .streak-flame { font-size: 42px; }
+            .streak-number { color: var(--pink-dark); font: 600 34px 'Playfair Display', serif; }
+            .daily-list { display: grid; gap: 9px; margin-top: 16px; }
+            .daily-task { display: flex; align-items:center;gap:10px;padding:10px 12px; border:1px solid var(--border); border-radius: 12px; background:var(--bg); }
+            .daily-task .task-icon { font-size:19px; }
+            .daily-task .task-copy { flex:1;min-width:0; }
+            .daily-task strong { display:block; font-size: 13px; }
+            .daily-task small { display:block;margin-top:3px; color:var(--muted); line-height:1.45; }
+            .daily-task .task-status { font-size:12px; color:var(--muted); }
+            .daily-task.complete { border-color:var(--green); background:var(--green-soft); }
+            .daily-task.complete .task-status { color:var(--pink-dark); font-weight:700; }
+            .friends-layout { display:grid; grid-template-columns:minmax(190px,.75fr) minmax(0,1.25fr); gap:16px; }
+            .friends-list { display:grid;gap:8px;align-content:start; }
+            .friend-row { display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--border); border-radius: 13px;background:var(--bg); }
+            .friend-select { flex: 1; min-width:0; text-align:left; border:0; background:transparent;color:var(--text); padding:3px; }
+            .friend-select.active { color:var(--pink-dark); font-weight: 700; }
+            .friend-avatar { display:grid;place-items:center; width:34px; height:34px; flex:0 0 auto; border-radius:50%; background:var(--pink-light); }
+            .friend-form { display:grid; gap:8px; margin-bottom:12px; }
+            .chat-box { display:flex; flex-direction:column; min-height:300px; border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--bg); }
+            .chat-heading { padding: 13px 15px; border-bottom: 1px solid var(--border); background:var(--surface); font-weight:700; }
+            .chat-messages { display:flex; flex:1; flex-direction:column; gap:9px; padding:14px; overflow:auto; max-height:300px; }
+            .chat-empty { margin:auto; max-width:260px; color:var(--muted); text-align:center; font-size:13px; line-height:1.7; }
+            .chat-bubble { align-self:flex-start; max-width:85%; padding:10px 12px; border-radius:14px 14px 14px 4px; background:var(--surface); border:1px solid var(--border); white-space:pre-wrap; overflow-wrap:anywhere; font-size: 13px; line-height: 1.55; }
+            .chat-bubble.mine { align-self: flex-end; background: var(--pink-light); border-color:var(--pink); border-radius:14px 14px 4px 14px; }
+            .chat-time { display: block; margin-top: 5px; color:var(--muted); font-size:10px; }
+            .chat-form { display:flex; gap:8px; padding:12px; border-top:1px solid var(--border); background:var(--surface); }
+            .chat-form .textinput { flex: 1; }
+            .local-note { margin-top:12px; padding: 11px 13px; border-radius:12px; background:var(--blue-soft); color:var(--muted); font-size:11px; line-height:1.6; }
+            .bloom-profile { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; align-items:end; padding:14px; margin-bottom:14px; border:1px solid var(--border); border-radius:16px; background:var(--bg); }
+            .profile-fields { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+            .profile-field label, .privacy-field label { display:block; margin-bottom:6px; color:var(--muted); font-size:11px; }
+            .profile-id { display:flex; gap:7px; align-items:center; flex-wrap:wrap; margin-top:9px; font-size:12px; }
+            .profile-id code { padding:5px 8px; border-radius:8px; background:var(--pink-light); color:var(--pink-dark); font-weight:700; letter-spacing:1px; }
+            .privacy-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0; }
+            .privacy-field { min-width:0; }
+            .privacy-field select { padding:10px; }
+            .security-status { margin-top:10px; padding:12px; border-radius:12px; background:var(--yellow); color: #55472d; font-size: 11px; line-height:1.65; }
+            .security-status strong { display:block; margin-bottom:3px; }
+            .chat-tools { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; padding:9px 13px; border-bottom:1px solid var(--border); color:var(--muted); font-size:11px; }
+            .chat-tools button { padding:6px 9px; border:1px solid var(--border); border-radius:9px; background:var(--surface); color:var(--text); font-size:11px; }
+            @media(max-width:520px) { .profile-fields,.privacy-row { grid-template-columns:1fr; } .bloom-profile { grid-template-columns:1fr; }} 
+            .mini-label { color:var(--muted); font-size:11px; line-height:1.5; }
+
+            /* 25. Responsive tablet layout */
+
+            @media (max-width: 800px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                    padding-top: 30px;
+                }
+
+                .hero-card {
+                    max-width: none;
+                }
+
+                .dashboard {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .wide {
+                    grid-column: span 2;
+                }
+            }
+
+            /* 25. Responsive phone layout */
+            @media (max-width: 540px) {
+                header {
+                    align-items: flex-start;
+                }
+
+                .brand {
+                    font-size: 27px;
+                }
+
+                .header-actions {
+                    gap: 6px;
+                }
+
+                .icon-button {
+                    padding: 9px 11px;
+                }
+
+                .dashboard { 
+                    grid-template-columns: 1fr;
+                    gap: 13px;
+                }
+
+                .wide,
+                .full {
+                    grid-column: auto;
+                }
+
+                .panel { 
+                    padding: 17px;
+                }
+
+                h2 {
+                    font-size: 23px;
+                }
+
+                .stats {
+                    gap: 6px;
+                }
+
+                .stat strong { 
+                    font-size: 22px;
+                }
+
+                .hero {
+                    gap: 20px;
+                }
+
+                .hero-card {
+                    padding: 20px;
+                }
+
+                .friends-layout { grid-template-columns: 1fr;}
+                .chat-box { min-height: 270px; }
+                .chat-form { flex-wrap: wrap;}
+                .chat-form .primary-button { flex: 0 0 auto; } 
+
+                .mood-options {
+                    gap: 5px;
+                }
+
+                .mood-button {
+                    font-size: 20px;
+                }
+
+                .mood-button span {
+                    font-size: 8px;
+                }
+
+                .add-row {
+                    align-items: stretch;
+                }
+
+                .add-row .primary-button {
+                    padding-inline: 12px;
+                }
+            }
+
+            /* 26. Reduced motion accessibility */
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    scroll-behavior: auto !important;
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+            </style>
+            </head>
+            <body>
+               <a class="skip-link" href="#main-content">Skip to your dashboard</a>
+               <div class="container">
+                <!-- 27. Header and theme switch -->
+                <header>
+                    <div class="brand" aria-label="Bloom, Your Little Reset">
+                        bloom
+                        <small>YOUR LITTLE RESET 🌷</small>
+                        </div>
+                        <div class="header-actions">
+                            <button class="icon-button" id="theme-button" type="button" aria-label="Switch to dark mode" title="Toggle dark mode">🌙</button>
+                            </div>
+                    </header>
+
+                    <!-- 28. Navigation -->
+                    <nav class="main-nav" aria-label="Main navigation">
+                        <a class="nav-link active" href="#dashboard-heading">Today</a>
+                        <a class="nav-link" href="#habits-panel">Habits</a>
+                        <a class="nav-link" href="#garden-panel">Garden</a>
+                        <a class="nav-link" href="#journal-panel">Journal</a>
+                        <a class="nav-link" href="#reset-panel">Mini reset</a>
+                        <a class="nav-link" href="#friends-panel">Friends💌</a>
+                        </nav>
+
+                        <!-- 29. Welcome area -->
+                        <section class="hero" aria-labelledby="welcome-heading">
+                            <div>
+                                <div class="eyebrow">A fresh page, every day</div>
+                                <h1 id="welcome-heading">A little space to <span>breath</span> and bloom.</h1>
+                                <p class="hero-copy">You don't have to have it all figured out. Take things one small step at a time. This is your reminder to care for yourself, too.</p>
+                                <button class="primary-button" id="start-button" type="button">Let's reset✨</button>
+                                <div class="date-line" id="date-label"></div>
+                                </div>
+                                <div class="hero-card">
+                                <div class="hero-flower" aria-hidden="true">🌷</div>
+                                <h3>Hey, lovely human. </h3>
+                                <p>You are allowed to grow at your own pace. Little steps count.</p>
+                                </div>
+                                </section>
+
+                                <!-- 30. Dashboard heading -->
+                                <div class="section-heading" id="dashboard-heading">
+                                    <h2>Your little reset</h2>
+                                    <span class="muted">Small steps, real progress</span>
+                                    </div>
+
+                                    <!-- Main dashboard -->
+                                    <main class="dashboard" id="main-content">
+                                        <!-- 32. Habit tracker -->
+                                        <section class="panel wide" id="habits-panel" aria-labelledby="habits-heading">
+                                            <div class="panel-title">
+                                                <div>
+                                                    <h3 id="habits-heading">Today's little habits</h3>
+                                                    <div class="muted">Tiny promises to yourself🌱</div>
+                                                    </div>
+                                                    <span class="panel-icon" aria-hidden="true">☀️</span>
+                                                    </div>
+                                                    <div class="habit-list" id="habit-list" aria-live="polite"></div>
+                                                    <form class="add-row" id="habit-form">
+                                                        <input class="text-input" id="habit-input" maxlength="70" placeholder="Add a little habit..." aria-label="New habit" autocomplete="off" required>
+                                                        <button class="primary-button" type="submit">Add +</button>
+                                                        </form>
+        <div style="margin-top:18px">
+          <div class="muted" id="habit-progress-label">0 of 0 habits complete</div>
+          <div class="progress-track" role="progressbar" aria-label="Today's habit completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="habit-progress-track">
+            <div class="progress-fill" id="habit-progress"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 33. Progress statistics -->
+      <section class="panel" id="progress-panel" aria-labelledby="progress-heading">
+        <div class="panel-title">
+          <h3 id="progress-heading">Your progress</h3>
+          <span class="panel-icon" aria-hidden="true">✨</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong id="stat-habits">0</strong><span>Habits today</span></div>
+          <div class="stat"><strong id="stat-streak">0</strong><span>Day streak</span></div>
+          <div class="stat"><strong id="stat-journal">0</strong><span>Journal notes</span></div>
+        </div>
+        <p class="muted" style="margin:15px 0 0">Every little effort matters. Celebrate the progress you make, not just the finish line.</p>
+      </section>
+
+      <!-- Daily completion and full-app streak -->
+      <section class="panel" id="daily-panel" aria-labelledby="daily-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="daily-heading">Your daily bloom streak</h3>
+            <div class="muted">A streak for caring for your whole self 🌷</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">🔥</span>
+        </div>
+        <div class="streak-card">
+          <div class="streak-flame" aria-hidden="true">🌸</div>
+          <div><div class="streak-number"><span id="full-streak-count">0</span> days</div><div class="muted" id="daily-streak-message">Complete your daily reset to start your streak.</div></div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Daily reset completion" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="daily-progress-track"><div class="progress-fill" id="daily-progress-fill"></div></div>
+        <div class="muted" id="daily-progress-label">0 of 5 daily steps complete</div>
+        <div class="daily-list" id="daily-checklist" aria-live="polite"></div>
+        <p class="mini-label" style="margin:13px 0 0">Your streak counts only when all five daily steps are complete. Be kind to yourself — missing a day doesn't erase the progress you've made.</p>
+      </section>
+
+      <!-- 34. Mood check-in -->
+      <section class="panel" id="mood-panel" aria-labelledby="mood-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="mood-heading">How are you feeling?</h3>
+            <div class="muted">Check in with yourself.</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">💗</span>
+        </div>
+        <div class="mood-options" id="mood-options">
+          <button type="button" class="mood-button" data-mood="Amazing" aria-label="Feeling amazing" aria-pressed="false">🤩<span>Amazing</span></button>
+          <button type="button" class="mood-button" data-mood="Happy" aria-label="Feeling happy" aria-pressed="false">😊<span>Happy</span></button>
+          <button type="button" class="mood-button" data-mood="Okay" aria-label="Feeling okay" aria-pressed="false">😌<span>Okay</span></button>
+          <button type="button" class="mood-button" data-mood="Sad" aria-label="Feeling sad" aria-pressed="false">🥺<span>Sad</span></button>
+          <button type="button" class="mood-button" data-mood="Stressed" aria-label="Feeling stressed" aria-pressed="false">😵‍💫<span>Stressed</span></button>
+        </div>
+        <p class="muted" id="mood-message" aria-live="polite" style="margin:14px 0 0">Whatever you're feeling, you don't have to judge it.</p>
+      </section>
+
+      <!-- 35. Water tracker -->
+      <section class="panel" id="water-panel" aria-labelledby="water-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="water-heading">Drink some water</h3>
+            <div class="muted">A little hydration break 💧</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">🥤</span>
+        </div>
+        <p class="water-summary" id="water-count" aria-live="polite">0 of 8 cups</p>
+        <div class="progress-track" role="progressbar" aria-label="Water cups completed" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="water-progress-track">
+          <div class="progress-fill" id="water-progress"></div>
+        </div>
+        <div class="water-cups" id="water-cups"></div>
+        <button class="secondary-button" id="water-reset" type="button">Reset cups</button>
+        <p class="muted" style="margin:12px 0 0">Tap a cup to set your total. Your needs may vary from day to day.</p>
+      </section>
+
+      <!-- 36. Growing garden -->
+      <section class="panel" id="garden-panel" aria-labelledby="garden-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="garden-heading">Your little garden</h3>
+            <div class="muted">Care for yourself, grow your garden.</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">🪴</span>
+        </div>
+        <div class="garden">
+          <div class="garden-plant" id="garden-plant" aria-hidden="true">🌱</div>
+          <strong id="garden-title">A new beginning</strong>
+          <p class="muted" id="garden-message" style="margin:8px 0 0">Your little garden is just getting started.</p>
+          <div class="garden-progress" role="progressbar" aria-label="Garden growth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="garden-progress-track">
+            <div class="garden-progress-fill" id="garden-progress"></div>
+          </div>
+          <div class="muted" id="garden-progress-label">Keep showing up for yourself.</div>
+        </div>
+      </section>
+
+      <!-- 37. Journal -->
+      <section class="panel wide" id="journal-panel" aria-labelledby="journal-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="journal-heading">A page for your thoughts</h3>
+            <div class="muted">Let it out. This space is yours. 📝</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">📖</span>
+        </div>
+        <form class="journal-form" id="journal-form">
+          <textarea id="journal-input" maxlength="3000" placeholder="What's on your mind today? What are you grateful for? What do you need to let go of?" aria-label="Write a journal entry" required></textarea>
+          <div class="muted" id="journal-character-count">0 / 3000 characters</div>
+          <button class="primary-button" type="submit">Save my thoughts ♡</button>
+        </form>
+        <div class="section-heading">
+          <h3>Recent reflections</h3>
+          <span class="muted" id="journal-total-label">0 saved</span>
+        </div>
+        <div id="journal-entries" aria-live="polite"></div>
+      </section>
+
+      <!-- 38. Affirmation -->
+      <section class="panel" id="affirmation-panel" aria-labelledby="affirmation-heading">
+        <div class="panel-title">
+          <h3 id="affirmation-heading">A little reminder</h3>
+          <span class="panel-icon" aria-hidden="true">💌</span>
+        </div>
+        <div class="affirmation" id="affirmation-text" aria-live="polite">You are allowed to grow at your own pace.</div>
+        <button class="secondary-button" id="new-affirmation" type="button">Another reminder ✨</button>
+      </section>
+
+      <!-- 39. Breathing exercise -->
+      <section class="panel" id="reset-panel" aria-labelledby="reset-heading">
+        <div class="panel-title">
+          <div>
+            <h3 id="reset-heading">Your mini reset</h3>
+            <div class="muted">Pause for a moment.</div>
+          </div>
+          <span class="panel-icon" aria-hidden="true">🌸</span>
+        </div>
+        <div class="reset-box">
+          <div class="breath-circle" id="breath-circle">Breathe</div>
+          <p class="muted" id="breath-message" aria-live="polite">You can take a moment for yourself.</p>
+          <button class="primary-button" id="breath-button" type="button" aria-pressed="false">Start breathing</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Friends and messages -->
+    <section class="panel full" id="friends-panel" aria-labelledby="friends-heading" style="margin-bottom:30px">
+      <div class="panel-title">
+        <div>
+          <h3 id="friends-heading">Bloom buddies 💌</h3>
+          <div class="muted">A little encouragement can make a difference.</div>
+        </div>
+        <span class="panel-icon" aria-hidden="true">🫶</span>
+      </div>
+      <div class="bloom-profile">
+        <div>
+          <div class="mini-label">YOUR BLOOM PROFILE</div>
+          <div class="profile-fields">
+            <div class="profile-field"><label for="profile-name">Your display name</label><input class="text-input" id="profile-name" maxlength="40" placeholder="What should friends call you?"></div>
+            <div class="profile-field"><label for="profile-id-input">Your Bloom ID</label><input class="text-input" id="profile-id-input" maxlength="20" placeholder="Your unique ID" readonly></div>
+          </div>
+          <div class="profile-id">Share this ID with friends: <code id="profile-id-label">BLOOM-------</code></div>
+        </div>
+        <button class="secondary-button" id="copy-profile-id" type="button">Copy my ID</button>
+      </div>
+      <div class="friends-layout">
+        <div>
+          <form class="friend-form" id="friend-form">
+            <input class="text-input" id="friend-name" maxlength="50" placeholder="Friend's name or nickname" aria-label="Friend's name" required>
+            <input class="text-input" id="friend-code" maxlength="40" placeholder="Their Bloom ID" aria-label="Friend's Bloom ID" required>
+            <button class="primary-button" type="submit">Add a buddy +</button>
+          </form>
+          <div class="mini-label" style="margin:0 0 9px">YOUR BUDDIES</div>
+          <div class="friends-list" id="friends-list" aria-live="polite"></div>
+        </div>
+        <div class="chat-box">
+          <div class="chat-heading" id="chat-title">Choose a buddy to open a chat</div>
+          <div class="chat-tools"><span id="chat-retention-label">Messages disappear after 7 days</span><button type="button" id="clear-chat">Clear this chat</button></div>
+          <div class="chat-messages" id="chat-messages" aria-live="polite"><p class="chat-empty">Add a buddy to start a little message thread.</p></div>
+          <form class="chat-form" id="chat-form">
+            <input class="text-input" id="chat-input" maxlength="1000" placeholder="Write a kind message..." aria-label="Message" autocomplete="off" disabled required>
+            <button class="primary-button" id="chat-send" type="submit" disabled>Send</button>
+          </form>
+        </div>
+      </div>
+      <div class="privacy-row">
+        <div class="privacy-field"><label for="message-retention">Disappearing messages</label><select id="message-retention"><option value="1">Disappear after 1 day</option><option value="7" selected>Disappear after 7 days</option><option value="90">Disappear after 90 days</option><option value="0">Keep until I delete them</option></select></div>
+        <div class="privacy-field"><label for="encryption-setting">Message privacy</label><select id="encryption-setting" disabled><option>End-to-end encryption: not connected yet</option></select></div>
+      </div>
+      <div class="security-status"><strong>🔒 About encryption</strong>Bloom cannot honestly call these chats end-to-end encrypted yet. This version stores chats on this device and does not send them to your friends. Real end-to-end encryption requires cross-device accounts, secure key exchange, and a backend that never receives readable messages. We'll need those pieces before enabling this safely.</div>
+      <div class="local-note">🌷 Your Bloom ID is generated and saved on this device. You can share it with friends, but adding an ID currently creates a local contact only; it does not verify the ID or deliver messages to another device until Bloom has its secure online service.</div>
+    </section>
+
+    <!-- 40. Footer -->
+    <footer class="footer-note">
+      Made with love, for the days you need a little extra softness. 🌷<br>
+      Bloom at your own pace.
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 41. Application logic -->
+  <script>
+    'use strict';
+
+    // 42. Tiny DOM helpers
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+    // 43. Storage keys are kept together to avoid accidental typos.
+    const STORAGE_KEYS = {
+      habits: 'bloom-habits',
+      water: 'bloom-water',
+      moods: 'bloom-moods',
+      journal: 'bloom-journal',
+      completedDays: 'bloom-completed-days',
+      darkMode: 'bloom-dark-mode',
+      habitDate: 'bloom-habit-date',
+      friends: 'bloom-friends',
+      messages: 'bloom-messages',
+      profile: 'bloom-profile',
+      retention: 'bloom-message-retention',
+      fullDailyDays: 'bloom-full-daily-days',
+      breathingDays: 'bloom-breathing-days'
+    };
+
+    // 44. Read saved data safely. Bad or unavailable storage falls back gracefully.
+    function loadData(key, fallback) {
+      try {
+        const saved = localStorage.getItem(key);
+        return saved === null ? fallback : JSON.parse(saved);
+      } catch (error) {
+        console.warn('Bloom could not read saved data for:', key, error);
+        return fallback;
+      }
+    }
+
+    // 45. Save data safely so storage issues do not crash the whole app.
+    function saveData(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch (error) {
+        console.warn('Bloom could not save this item:', key, error);
+        showToast('Your browser could not save this change.');
+        return false;
+      }
+    }
+
+    // 46. Use local calendar dates, not UTC dates, for daily tracking.
+    function localDateKey(date = new Date()) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // 47. Display a readable date for journal cards.
+    function formatDateTime(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value || 'Saved reflection');
+      return date.toLocaleString(undefined, {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      });
+    }
+
+    // 48. Small toast helper. A previous timer is cancelled before a new message.
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = $('#toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    // 49. Default habit list for a brand-new user.
+    const defaultHabits = [
+      { id: 1, name: 'Drink a glass of water', done: false },
+      { id: 2, name: 'Take a little break', done: false },
+      { id: 3, name: 'Move my body', done: false },
+      { id: 4, name: 'Do something just for me', done: false }
+    ];
+
+    // 50. Affirmations shown when the user asks for another reminder.
+    const affirmations = [
+      'You are allowed to grow at your own pace.',
+      'Rest is productive, too.',
+      'You do not need to earn your rest.',
+      'Small steps are still steps forward.',
+      'You deserve the same kindness you give others.',
+      'You can begin again as many times as you need.',
+      'Progress does not have to be perfect.',
+      'You are more than what you get done today.',
+      'It is okay to take things one day at a time.',
+      'You are becoming, and that is enough.',
+      'A hard day does not erase your progress.',
+      'You can do less and still be worthy of care.',
+      'You are allowed to make room for joy.',
+      'You do not have to bloom every single day.',
+      'Be proud of the small things you did today.'
+    ];
+
+    // 51. Current day and saved state
+    let today = localDateKey();
+    let habits = loadData(STORAGE_KEYS.habits, defaultHabits);
+    let water = loadData(STORAGE_KEYS.water, { date: today, count: 0 });
+    let moods = loadData(STORAGE_KEYS.moods, {});
+    let journal = loadData(STORAGE_KEYS.journal, []);
+    let completedDays = loadData(STORAGE_KEYS.completedDays, []);
+    let darkMode = loadData(STORAGE_KEYS.darkMode, false);
+    let habitDate = loadData(STORAGE_KEYS.habitDate, today);
+    let breathing = false;
+    let breathInterval = null;
+    let affirmationIndex = 0;
+    let friends = loadData(STORAGE_KEYS.friends, []);
+    let messages = loadData(STORAGE_KEYS.messages, {});
+    let profile = loadData(STORAGE_KEYS.profile, null);
+    let messageRetention = String(loadData(STORAGE_KEYS.retention, '7'));
+    let fullDailyDays = loadData(STORAGE_KEYS.fullDailyDays, []);
+    let breathingDays = loadData(STORAGE_KEYS.breathingDays, []);
+    let activeFriendId = null;
+
+    // 52. Normalize saved values in case an older version saved malformed data.
+    if (!Array.isArray(habits)) habits = defaultHabits.map(habit => ({ ...habit }));
+    habits = habits
+      .filter(habit => habit && typeof habit.name === 'string')
+      .map((habit, index) => ({
+        id: Number.isFinite(Number(habit.id)) ? Number(habit.id) : Date.now() + index,
+        name: habit.name.slice(0, 70),
+        done: Boolean(habit.done)
+      }));
+
+    if (!water || typeof water !== 'object') water = { date: today, count: 0 };
+    water.count = Math.min(8, Math.max(0, Number.parseInt(water.count, 10) || 0));
+    if (!moods || typeof moods !== 'object' || Array.isArray(moods)) moods = {};
+    if (!Array.isArray(journal)) journal = [];
+    journal = journal.filter(entry => entry && typeof entry.text === 'string');
+    if (!Array.isArray(completedDays)) completedDays = [];
+    if (!Array.isArray(friends)) friends = [];
+    friends = friends.filter(friend => friend && typeof friend.name === 'string' && friend.id != null).map(friend => ({ id: String(friend.id), name: friend.name.slice(0, 50), code: String(friend.code || '').slice(0, 40) }));
+    if (!messages || typeof messages !== 'object' || Array.isArray(messages)) messages = {};
+    if (!profile || typeof profile !== 'object') profile = {};
+    if (!profile.id || !/^BLOOM-[A-F0-9]{8}$/.test(String(profile.id))) {
+      const randomPart = (window.crypto && crypto.getRandomValues) ? Array.from(crypto.getRandomValues(new Uint8Array(4)), n => n.toString(16).padStart(2, '0')).join('').toUpperCase() : Math.random().toString(16).slice(2, 10).toUpperCase().padEnd(8, '0');
+      profile.id = `BLOOM-${randomPart}`;
+    }
+    profile.name = typeof profile.name === 'string' ? profile.name.slice(0, 40) : '';
+    if (!['1','7','90','0'].includes(messageRetention)) messageRetention = '7';
+    function purgeExpiredMessages() {
+      if (messageRetention === '0') return;
+      const cutoff = Date.now() - Number(messageRetention) * 24 * 60 * 60 * 1000;
+      Object.keys(messages).forEach(friendId => {
+        if (!Array.isArray(messages[friendId])) { delete messages[friendId]; return; }
+        messages[friendId] = messages[friendId].filter(message => {
+          const timestamp = Date.parse(message.createdAt || '');
+          return Number.isFinite(timestamp) && timestamp >= cutoff;
+        });
+      });
+      saveData(STORAGE_KEYS.messages, messages);
+    }
+    purgeExpiredMessages();
+    if (!Array.isArray(fullDailyDays)) fullDailyDays = [];
+    if (!Array.isArray(breathingDays)) breathingDays = [];
+
+    // 53. Reset only daily habit completion when the calendar day changes.
+    if (habitDate !== today) {
+      habits = habits.map(habit => ({ ...habit, done: false }));
+      habitDate = today;
+      saveData(STORAGE_KEYS.habits, habits);
+      saveData(STORAGE_KEYS.habitDate, habitDate);
+    }
+
+    // 54. Water counts restart on a new local day.
+    if (water.date !== today) {
+      water = { date: today, count: 0 };
+      saveData(STORAGE_KEYS.water, water);
+    }
+
+    // 55. Apply saved theme as early as possible.
+    document.body.classList.toggle('dark', Boolean(darkMode));
+    $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
+    $('#theme-button').setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
+
+    // 56. Today's date label.
+    $('#date-label').textContent = new Date().toLocaleDateString(undefined, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    // 57. Update the completion-day history based on today's habits.
+    function checkCompletedDay() {
+      const allDone = habits.length > 0 && habits.every(habit => habit.done);
+      if (allDone && !completedDays.includes(today)) {
+        completedDays.push(today);
+      }
+      if (!allDone) {
+        completedDays = completedDays.filter(day => day !== today);
+      }
+      completedDays = Array.from(new Set(completedDays)).sort();
+      saveData(STORAGE_KEYS.completedDays, completedDays);
+      updateDailyProgress();
+      updateGarden();
+    }
+
+    // 58. Render all habit rows using DOM methods instead of injecting user text as HTML.
+    function renderHabits() {
+      const list = $('#habit-list');
+      list.replaceChildren();
+
+      if (habits.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'No habits yet. Add one small thing you would like to do for yourself.';
+        list.appendChild(empty);
+      }
+
+      habits.forEach(habit => {
+        const row = document.createElement('div');
+        row.className = `habit${habit.done ? ' done' : ''}`;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = Boolean(habit.done);
+        checkbox.setAttribute('aria-label', `Mark ${habit.name} complete`);
+        checkbox.addEventListener('change', () => {
+          habits = habits.map(item => item.id === habit.id
+            ? { ...item, done: checkbox.checked }
+            : item);
+          saveData(STORAGE_KEYS.habits, habits);
+          checkCompletedDay();
+          renderHabits();
+          showToast(checkbox.checked ? 'One little promise kept 🌷' : 'Habit unchecked. You can try again.');
+        });
+
+        const name = document.createElement('span');
+        name.className = 'habit-name';
+        name.textContent = habit.name;
+
+        const remove = document.createElement('button');
+        remove.className = 'delete-button';
+        remove.type = 'button';
+        remove.textContent = 'Remove';
+        remove.setAttribute('aria-label', `Delete ${habit.name}`);
+        remove.addEventListener('click', () => {
+          habits = habits.filter(item => item.id !== habit.id);
+          saveData(STORAGE_KEYS.habits, habits);
+          checkCompletedDay();
+          renderHabits();
+          showToast('Habit removed.');
+        });
+
+        row.append(checkbox, name, remove);
+        list.appendChild(row);
+      });
+
+      const done = habits.filter(habit => habit.done).length;
+      const total = habits.length;
+      const percent = total ? Math.round((done / total) * 100) : 0;
+      $('#habit-progress-label').textContent = `${done} of ${total} habits complete`;
+      $('#habit-progress').style.width = `${percent}%`;
+      $('#habit-progress-track').setAttribute('aria-valuenow', String(percent));
+      $('#stat-habits').textContent = String(done);
+    }
+
+    // 59. Add a new habit.
+    $('#habit-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const input = $('#habit-input');
+      const name = input.value.trim();
+      if (!name) {
+        input.focus();
+        return;
+      }
+      if (habits.some(habit => habit.name.toLowerCase() === name.toLowerCase())) {
+        showToast('That habit is already on your list.');
+        input.focus();
+        return;
+      }
+      habits.push({ id: Date.now(), name: name.slice(0, 70), done: false });
+      saveData(STORAGE_KEYS.habits, habits);
+      saveData(STORAGE_KEYS.habitDate, today);
+      habitDate = today;
+      input.value = '';
+      checkCompletedDay();
+      renderHabits();
+      input.focus();
+      showToast('A new little habit has been planted 🌱');
+    });
+
+    // 60. The Bloom streak requires completion across the whole daily reset.
+    function getDailyTasks() {
+      const journalDone = journal.some(entry => {
+        const dateValue = entry.createdAt || entry.timestamp;
+        return dateValue && localDateKey(new Date(dateValue)) === today;
+      });
+      return [
+        { id: 'habits', icon: '🌱', title: 'Finish all your habits', detail: `${habits.filter(h => h.done).length} of ${habits.length} habits complete`, done: habits.length > 0 && habits.every(h => h.done) },
+        { id: 'water', icon: '💧', title: 'Complete your water tracker', detail: `${water.count} of 8 cups logged`, done: water.count >= 8 },
+        { id: 'mood', icon: '💗', title: 'Check in with your mood', detail: moods[today] ? `Mood saved: ${moods[today]}` : 'Choose how you are feeling today', done: Boolean(moods[today]) },
+        { id: 'journal', icon: '📖', title: 'Write a journal entry', detail: journalDone ? 'Today’s reflection is saved' : 'Write a little about your day', done: journalDone },
+        { id: 'breathing', icon: '🌸', title: 'Take your mini reset', detail: breathingDays.includes(today) ? 'Breathing reset completed' : 'Finish one breathing reset', done: breathingDays.includes(today) }
+      ];
+    }
+
+    function updateDailyProgress() {
+      const tasks = getDailyTasks();
+      const done = tasks.filter(task => task.done).length;
+      const allDone = done === tasks.length;
+      if (allDone && !fullDailyDays.includes(today)) fullDailyDays.push(today);
+      if (!allDone) fullDailyDays = fullDailyDays.filter(day => day !== today);
+      fullDailyDays = Array.from(new Set(fullDailyDays)).sort();
+      saveData(STORAGE_KEYS.fullDailyDays, fullDailyDays);
+      renderDailyChecklist(tasks, done);
+      renderStats();
+    }
+
+    function renderDailyChecklist(tasks = getDailyTasks(), done = tasks.filter(task => task.done).length) {
+      const holder = $('#daily-checklist');
+      if (!holder) return;
+      holder.replaceChildren();
+      tasks.forEach(task => {
+        const row = document.createElement('div');
+        row.className = `daily-task${task.done ? ' complete' : ''}`;
+        const icon = document.createElement('span');
+        icon.className = 'task-icon';
+        icon.textContent = task.icon;
+        const copy = document.createElement('div');
+        copy.className = 'task-copy';
+        const title = document.createElement('strong');
+        title.textContent = task.title;
+        const detail = document.createElement('small');
+        detail.textContent = task.detail;
+        copy.append(title, detail);
+        const status = document.createElement('span');
+        status.className = 'task-status';
+        status.textContent = task.done ? '✓ Done' : 'To do';
+        row.append(icon, copy, status);
+        holder.appendChild(row);
+      });
+      $('#daily-progress-label').textContent = `${done} of ${tasks.length} daily steps complete`;
+      $('#daily-progress-fill').style.width = `${(done / tasks.length) * 100}%`;
+      $('#daily-progress-track').setAttribute('aria-valuenow', String(done));
+      $('#full-streak-count').textContent = String(calculateStreak());
+      $('#daily-streak-message').textContent = done === tasks.length
+        ? 'You showed up for your whole self today. Your streak is alive! ✨'
+        : `${tasks.length - done} more ${tasks.length - done === 1 ? 'step' : 'steps'} to keep today's streak going.`;
+    }
+
+    function calculateStreak() {
+      const completed = new Set(fullDailyDays);
+      let cursor = new Date();
+      if (!completed.has(localDateKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+      let streak = 0;
+      while (completed.has(localDateKey(cursor))) {
+        streak += 1;
+        cursor.setDate(cursor.getDate() - 1);
+      }
+      return streak;
+    }
+
+    // 61. Render the statistics panel.
+    function renderStats() {
+      $('#stat-streak').textContent = String(calculateStreak());
+      $('#stat-journal').textContent = String(journal.length);
+    }
+
+    // 62. Water tracker rendering.
+    function renderWater() {
+      const holder = $('#water-cups');
+      holder.replaceChildren();
+
+      for (let i = 1; i <= 8; i += 1) {
+        const cup = document.createElement('button');
+        cup.type = 'button';
+        cup.className = `water-cup${i <= water.count ? ' filled' : ''}`;
+        cup.textContent = i <= water.count ? '💧' : '🥛';
+        cup.setAttribute('aria-label', `Set water intake to ${i} cups`);
+        cup.setAttribute('aria-pressed', String(i === water.count));
+        cup.addEventListener('click', () => {
+          water = { date: today, count: i };
+          saveData(STORAGE_KEYS.water, water);
+          renderWater();
+          updateDailyProgress();
+          showToast(`${i} of 8 cups logged 💧`);
+        });
+        holder.appendChild(cup);
+      }
+
+      $('#water-count').textContent = `${water.count} of 8 cups`;
+      $('#water-progress').style.width = `${(water.count / 8) * 100}%`;
+      $('#water-progress-track').setAttribute('aria-valuenow', String(water.count));
+    }
+
+    // 63. Reset water for today.
+    $('#water-reset').addEventListener('click', () => {
+      water = { date: today, count: 0 };
+      saveData(STORAGE_KEYS.water, water);
+      renderWater();
+      updateDailyProgress();
+      showToast('Water tracker reset.');
+    });
+
+    // 64. Mood messages keep the tone gentle and non-judgmental.
+    const moodMessages = {
+      Amazing: 'You checked in as feeling amazing. Let yourself enjoy this moment! ✨',
+      Happy: 'You checked in as feeling happy. I hope you get to hold on to a little of that joy. 💗',
+      Okay: 'You checked in as feeling okay. Okay is a perfectly valid place to be.',
+      Sad: 'You checked in as feeling sad. You do not have to force yourself to feel better right now. 💗',
+      Stressed: 'You checked in as feeling stressed. Take one thing at a time; you do not have to solve everything at once.'
+    };
+
+    // 65. Display today's mood selection.
+    function renderMood() {
+      const mood = moods[today];
+      $$('.mood-button').forEach(button => {
+        const selected = button.dataset.mood === mood;
+        button.classList.toggle('selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+      $('#mood-message').textContent = mood
+        ? (moodMessages[mood] || `You checked in as feeling ${String(mood).toLowerCase()}. Be gentle with yourself today.`)
+        : "Whatever you're feeling, you don't have to judge it.";
+    }
+
+    // 66. Save mood selection for today's date.
+    $$('.mood-button').forEach(button => {
+      button.addEventListener('click', () => {
+        moods[today] = button.dataset.mood;
+        saveData(STORAGE_KEYS.moods, moods);
+        renderMood();
+        updateDailyProgress();
+        showToast('Mood check-in saved 💗');
+      });
+    });
+
+    // 67. Render recent journal entries.
+    function renderJournal() {
+      const holder = $('#journal-entries');
+      holder.replaceChildren();
+      $('#journal-total-label').textContent = `${journal.length} saved`;
+
+      if (journal.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'Your reflections will appear here when you save your first entry. 💗';
+        holder.appendChild(empty);
+        return;
+      }
+
+      journal.slice(0, 5).forEach(entry => {
+        const card = document.createElement('article');
+        card.className = 'journal-entry';
+
+        const topLine = document.createElement('div');
+        topLine.className = 'entry-topline';
+
+        const date = document.createElement('div');
+        date.className = 'entry-date';
+        date.textContent = formatDateTime(entry.createdAt || entry.date);
+
+        const mood = document.createElement('span');
+        mood.className = 'entry-mood';
+        mood.textContent = entry.mood ? (entry.moodEmoji || '💗') : '';
+        mood.setAttribute('aria-label', entry.mood ? `Mood: ${entry.mood}` : '');
+
+        const text = document.createElement('div');
+        text.className = 'entry-text';
+        text.textContent = entry.text;
+
+        const actions = document.createElement('div');
+        actions.className = 'journal-actions';
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'delete-button';
+        remove.textContent = 'Delete entry';
+        remove.setAttribute('aria-label', 'Delete this journal entry');
+        remove.addEventListener('click', () => {
+          journal = journal.filter(item => item.id !== entry.id);
+          saveData(STORAGE_KEYS.journal, journal);
+          renderJournal();
+          renderStats();
+          updateDailyProgress();
+          updateGarden();
+          showToast('Reflection deleted.');
+        });
+
+        topLine.append(date, mood);
+        actions.appendChild(remove);
+        card.append(topLine, text, actions);
+        holder.appendChild(card);
+      });
+    }
+
+    // 68. Character count for the journal text area.
+    $('#journal-input').addEventListener('input', () => {
+      const length = $('#journal-input').value.length;
+      $('#journal-character-count').textContent = `${length} / 3000 characters`;
+    });
+
+    // 69. Save a journal entry.
+    $('#journal-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const input = $('#journal-input');
+      const text = input.value.trim();
+      if (!text) {
+        input.focus();
+        return;
+      }
+      const mood = moods[today] || '';
+      const moodEmoji = {
+        Amazing: '🤩',
+        Happy: '😊',
+        Okay: '😌',
+        Sad: '🥺',
+        Stressed: '😵‍💫'
+      }[mood] || '';
+
+      journal.unshift({
+        id: Date.now(),
+        createdAt: new Date().toISOString(),
+        date: new Date().toLocaleString(),
+        text: text.slice(0, 3000),
+        mood,
+        moodEmoji
+      });
+
+      saveData(STORAGE_KEYS.journal, journal);
+      input.value = '';
+      $('#journal-character-count').textContent = '0 / 3000 characters';
+      renderJournal();
+      renderStats();
+      updateDailyProgress();
+      updateGarden();
+      showToast('Your thoughts have been saved 💌');
+    });
+
+    // 70. Garden growth is based on small actions over time.
+    function updateGarden() {
+      const habitPoints = habits.filter(habit => habit.done).length;
+      const journalPoints = Math.min(journal.length, 15);
+      const streakPoints = Math.min(fullDailyDays.length, 15);
+      const points = habitPoints + journalPoints + streakPoints;
+      let plant = '🌱';
+      let title = 'A new beginning';
+      let message = 'Your little garden is just getting started.';
+      let level = 1;
+      let nextLevelAt = 5;
+
+      if (points >= 5) {
+        plant = '🌿';
+        title = 'Growing gently';
+        message = 'Look at you, making space for yourself.';
+        level = 2;
+        nextLevelAt = 12;
+      }
+      if (points >= 12) {
+        plant = '🪴';
+        title = 'Growing stronger';
+        message = 'Your small steps are adding up.';
+        level = 3;
+        nextLevelAt = 25;
+      }
+      if (points >= 25) {
+        plant = '🌷';
+        title = 'Look at you bloom!';
+        message = 'Keep showing up for yourself, one day at a time.';
+        level = 4;
+        nextLevelAt = 35;
+      }
+
+      const previousPlant = $('#garden-plant').textContent;
+      $('#garden-plant').textContent = plant;
+      $('#garden-title').textContent = title;
+      $('#garden-message').textContent = message;
+      $('#garden-plant').classList.toggle('grow', previousPlant !== plant);
+
+      const progress = level === 4
+        ? 100
+        : Math.min(100, Math.round((points / nextLevelAt) * 100));
+      $('#garden-progress').style.width = `${progress}%`;
+      $('#garden-progress-track').setAttribute('aria-valuenow', String(progress));
+      $('#garden-progress-label').textContent = level === 4
+        ? 'Your garden is blooming beautifully.'
+        : `${Math.max(0, nextLevelAt - points)} little points to the next stage.`;
+    }
+
+    // 71. Pick a different affirmation each time if possible.
+    $('#new-affirmation').addEventListener('click', () => {
+      if (affirmations.length < 2) return;
+      let nextIndex = affirmationIndex;
+      while (nextIndex === affirmationIndex) {
+        nextIndex = Math.floor(Math.random() * affirmations.length);
+      }
+      affirmationIndex = nextIndex;
+      $('#affirmation-text').textContent = affirmations[affirmationIndex];
+    });
+
+    // 72. Dark-mode toggle persists between visits.
+    $('#theme-button').addEventListener('click', () => {
+      darkMode = !darkMode;
+      document.body.classList.toggle('dark', darkMode);
+      $('#theme-button').textContent = darkMode ? '☀️' : '🌙';
+      $('#theme-button').setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
+      saveData(STORAGE_KEYS.darkMode, darkMode);
+      showToast(darkMode ? 'A softer, darker theme 🌙' : 'Back to the light theme ☀️');
+    });
+
+    // 73. The welcome button scrolls to the dashboard.
+    $('#start-button').addEventListener('click', () => {
+      $('#dashboard-heading').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('#habit-input').focus({ preventScroll: true });
+    });
+
+    // 74. Breathing exercise can be started and stopped without leaving intervals running.
+    function stopBreathing(showCompletion = true) {
+      if (showCompletion && breathing && !breathingDays.includes(today)) {
+        breathingDays.push(today);
+        saveData(STORAGE_KEYS.breathingDays, breathingDays);
+      }
+      breathing = false;
+      if (breathInterval !== null) {
+        window.clearInterval(breathInterval);
+        breathInterval = null;
+      }
+      $('#breath-circle').classList.remove('breathing');
+      $('#breath-circle').textContent = 'Breathe';
+      $('#breath-button').textContent = 'Start breathing';
+      $('#breath-button').setAttribute('aria-pressed', 'false');
+      $('#breath-message').textContent = showCompletion
+        ? 'Well done for taking a moment for yourself. 💗'
+        : 'You can take a moment for yourself.';
+      if (showCompletion) updateDailyProgress();
+    }
+
+    // 75. Toggle the breathing animation and inhale/exhale prompts.
+    $('#breath-button').addEventListener('click', () => {
+      const circle = $('#breath-circle');
+      const message = $('#breath-message');
+      const button = $('#breath-button');
+
+      if (breathing) {
+        stopBreathing(true);
+        return;
+      }
+
+      breathing = true;
+      circle.classList.add('breathing');
+      circle.textContent = 'Breathe in...';
+      message.textContent = 'Breathe in slowly for four seconds, then breathe out gently.';
+      button.textContent = 'Finish reset';
+      button.setAttribute('aria-pressed', 'true');
+
+      let inhale = true;
+      breathInterval = window.setInterval(() => {
+        if (!breathing) return;
+        inhale = !inhale;
+        circle.textContent = inhale ? 'Breathe in...' : 'Breathe out...';
+      }, 4000);
+    });
+
+    // 76. Stop any active breathing interval if the page is being hidden.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && breathing) stopBreathing(false);
+    });
+
+    // 77. Highlight the current navigation destination while links are used.
+    $$('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        $$('.nav-link').forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // 78. Refresh the date-dependent state if the page stays open overnight.
+    function refreshDayIfNeeded() {
+      const newToday = localDateKey();
+      if (newToday === today) return;
+
+      today = newToday;
+      habits = habits.map(habit => ({ ...habit, done: false }));
+      habitDate = today;
+      water = { date: today, count: 0 };
+      saveData(STORAGE_KEYS.habits, habits);
+      saveData(STORAGE_KEYS.habitDate, habitDate);
+      saveData(STORAGE_KEYS.water, water);
+
+      $('#date-label').textContent = new Date().toLocaleDateString(undefined, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      renderHabits();
+      renderWater();
+      renderMood();
+      checkCompletedDay();
+      updateDailyProgress();
+      updateGarden();
+    }
+
+    // 79. Recheck the date when the tab becomes visible again.
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) refreshDayIfNeeded();
+    });
+
+    // Friends and messages. This is local-only until Bloom has a shared backend.
+    function renderFriends() {
+      const holder = $('#friends-list');
+      holder.replaceChildren();
+      if (!friends.length) {
+        const empty = document.createElement('p');
+        empty.className = 'empty-state';
+        empty.textContent = 'Your buddy list is waiting for its first little hello.';
+        holder.appendChild(empty);
+      }
+      friends.forEach(friend => {
+        const row = document.createElement('div');
+        row.className = 'friend-row';
+        const avatar = document.createElement('span');
+        avatar.className = 'friend-avatar';
+        avatar.textContent = '🌷';
+        const select = document.createElement('button');
+        select.type = 'button';
+        select.className = `friend-select${friend.id === activeFriendId ? ' active' : ''}`;
+        select.textContent = friend.name;
+        select.addEventListener('click', () => { activeFriendId = friend.id; renderFriends(); renderChat(); });
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'delete-button';
+        remove.textContent = '×';
+        remove.setAttribute('aria-label', `Remove ${friend.name}`);
+        remove.addEventListener('click', () => {
+          friends = friends.filter(item => item.id !== friend.id);
+          if (activeFriendId === friend.id) activeFriendId = friends[0]?.id || null;
+          saveData(STORAGE_KEYS.friends, friends);
+          renderFriends(); renderChat();
+          showToast(`${friend.name} removed from your local buddy list.`);
+        });
+        row.append(avatar, select, remove);
+        holder.appendChild(row);
+      });
+    }
+
+    function renderChat() {
+      const friend = friends.find(item => item.id === activeFriendId);
+      const holder = $('#chat-messages');
+      holder.replaceChildren();
+      $('#chat-title').textContent = friend ? `A little chat with ${friend.name}` : 'Choose a buddy to open a chat';
+      $('#chat-retention-label').textContent = messageRetention === '0' ? 'Messages stay until you delete them' : `Messages disappear after ${messageRetention} day${messageRetention === '1' ? '' : 's'}`;
+      $('#chat-input').disabled = !friend;
+      $('#chat-send').disabled = !friend;
+      if (!friend) {
+        const empty = document.createElement('p');
+        empty.className = 'chat-empty';
+        empty.textContent = 'Add a buddy to start a little message thread.';
+        holder.appendChild(empty);
+        return;
+      }
+      const thread = Array.isArray(messages[friend.id]) ? messages[friend.id] : [];
+      if (!thread.length) {
+        const empty = document.createElement('p');
+        empty.className = 'chat-empty';
+        empty.textContent = `Send ${friend.name} a kind note, a check-in, or a little reminder that they're doing their best.`;
+        holder.appendChild(empty);
+      }
+      thread.forEach(message => {
+        const bubble = document.createElement('div');
+        bubble.className = `chat-bubble${message.from === 'me' ? ' mine' : ''}`;
+        bubble.appendChild(document.createTextNode(message.text));
+        const time = document.createElement('span');
+        time.className = 'chat-time';
+        time.textContent = formatDateTime(message.createdAt);
+        bubble.appendChild(time);
+        holder.appendChild(bubble);
+      });
+      holder.scrollTop = holder.scrollHeight;
+    }
+
+    $('#friend-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const nameInput = $('#friend-name');
+      const codeInput = $('#friend-code');
+      const name = nameInput.value.trim();
+      const code = codeInput.value.trim();
+      if (!name) { nameInput.focus(); return; }
+      if (!/^BLOOM-[A-F0-9]{8}$/i.test(code)) { showToast('Ask your buddy for their full Bloom ID (BLOOM-XXXXXXXX).'); codeInput.focus(); return; }
+      if (code.toUpperCase() === profile.id) { showToast('That is your own Bloom ID!'); codeInput.focus(); return; }
+      if (friends.some(friend => friend.name.toLowerCase() === name.toLowerCase())) {
+        showToast('That buddy is already on your list.');
+        nameInput.focus();
+        return;
+      }
+      if (friends.some(friend => String(friend.code || '').toUpperCase() === code.toUpperCase())) { showToast('That Bloom ID is already in your buddy list.'); codeInput.focus(); return; }
+      const friend = { id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, name: name.slice(0, 50), code: code.toUpperCase().slice(0, 40) };
+      friends.push(friend);
+      activeFriendId = friend.id;
+      saveData(STORAGE_KEYS.friends, friends);
+      saveData(STORAGE_KEYS.messages, messages);
+      nameInput.value = '';
+      codeInput.value = '';
+      renderFriends(); renderChat();
+      showToast(`${friend.name} added to your local buddy list 💌`);
+    });
+
+    // Profile identity and disappearing-message preferences.
+    $('#profile-name').value = profile.name;
+    $('#profile-id-input').value = profile.id;
+    $('#profile-id-label').textContent = profile.id;
+    $('#profile-name').addEventListener('change', event => {
+      profile.name = event.target.value.trim().slice(0, 40);
+      saveData(STORAGE_KEYS.profile, profile);
+      showToast('Your Bloom profile name is saved 🌷');
+    });
+    $('#copy-profile-id').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(profile.id);
+        showToast('Your Bloom ID was copied 💗');
+      } catch (error) {
+        const field = $('#profile-id-input');
+        field.focus(); field.select();
+        showToast('Select and copy your Bloom ID from the field.');
+      }
+    });
+    $('#message-retention').value = messageRetention;
+    $('#message-retention').addEventListener('change', event => {
+      messageRetention = event.target.value;
+      saveData(STORAGE_KEYS.retention, messageRetention);
+      purgeExpiredMessages();
+      renderChat();
+      showToast(messageRetention === '0' ? 'Chats will stay until you delete them.' : `Expired messages removed. New retention: ${messageRetention} day${messageRetention === '1' ? '' : 's'}.`);
+    });
+    $('#clear-chat').addEventListener('click', () => {
+      const friend = friends.find(item => item.id === activeFriendId);
+      if (!friend) { showToast('Choose a buddy first.'); return; }
+      if (!window.confirm(`Delete the local chat with ${friend.name}? This cannot be undone.`)) return;
+      delete messages[friend.id];
+      saveData(STORAGE_KEYS.messages, messages);
+      renderChat();
+      showToast('This local chat has been deleted.');
+    });
+
+    $('#chat-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const input = $('#chat-input');
+      const text = input.value.trim();
+      const friend = friends.find(item => item.id === activeFriendId);
+      if (!friend || !text) return;
+      if (!Array.isArray(messages[friend.id])) messages[friend.id] = [];
+      messages[friend.id].push({ id: Date.now(), from: 'me', text: text.slice(0, 1000), createdAt: new Date().toISOString() });
+      saveData(STORAGE_KEYS.messages, messages);
+      input.value = '';
+      renderChat();
+      input.focus();
+      showToast('Message saved in this browser 💗');
+    });
+
+    // 80. Save normalized values back to storage for consistency.
+    saveData(STORAGE_KEYS.habits, habits);
+    saveData(STORAGE_KEYS.water, water);
+    saveData(STORAGE_KEYS.moods, moods);
+    saveData(STORAGE_KEYS.journal, journal);
+    saveData(STORAGE_KEYS.completedDays, completedDays);
+    saveData(STORAGE_KEYS.friends, friends);
+    saveData(STORAGE_KEYS.messages, messages);
+    saveData(STORAGE_KEYS.profile, profile);
+    saveData(STORAGE_KEYS.retention, messageRetention);
+    saveData(STORAGE_KEYS.fullDailyDays, fullDailyDays);
+    saveData(STORAGE_KEYS.breathingDays, breathingDays);
+
+    // 81. Initial render: all UI sections get drawn from the saved state.
+    renderHabits();
+    renderStats();
+    renderWater();
+    renderMood();
+    renderJournal();
+    renderFriends();
+    renderChat();
+    updateDailyProgress();
+    updateGarden();
+  </script>
+</body>
+</html>
+                                
